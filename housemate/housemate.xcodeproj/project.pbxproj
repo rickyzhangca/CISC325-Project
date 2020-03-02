@@ -15,6 +15,11 @@
 		AA2F2404240D74B100F3724E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA2F2402240D74B100F3724E /* LaunchScreen.storyboard */; };
 		AA2F240F240D74B200F3724E /* housemateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2F240E240D74B200F3724E /* housemateTests.swift */; };
 		AA2F241A240D74B200F3724E /* housemateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2F2419240D74B200F3724E /* housemateUITests.swift */; };
+		AAF18818240D7B17006610CB /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF18817240D7B17006610CB /* TabBar.swift */; };
+		AAF1881A240D7BA2006610CB /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF18819240D7BA2006610CB /* HomeView.swift */; };
+		AAF1881C240D7BAA006610CB /* BillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF1881B240D7BAA006610CB /* BillView.swift */; };
+		AAF1881E240D7BB5006610CB /* MarketplaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF1881D240D7BB5006610CB /* MarketplaceView.swift */; };
+		AAF18820240D7BC1006610CB /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF1881F240D7BC1006610CB /* ProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +54,11 @@
 		AA2F2415240D74B200F3724E /* housemateUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = housemateUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA2F2419240D74B200F3724E /* housemateUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = housemateUITests.swift; sourceTree = "<group>"; };
 		AA2F241B240D74B200F3724E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AAF18817240D7B17006610CB /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		AAF18819240D7BA2006610CB /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		AAF1881B240D7BAA006610CB /* BillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillView.swift; sourceTree = "<group>"; };
+		AAF1881D240D7BB5006610CB /* MarketplaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceView.swift; sourceTree = "<group>"; };
+		AAF1881F240D7BC1006610CB /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +112,11 @@
 				AA2F23F7240D74B000F3724E /* AppDelegate.swift */,
 				AA2F23F9240D74B000F3724E /* SceneDelegate.swift */,
 				AA2F23FB240D74B000F3724E /* ContentView.swift */,
+				AAF18817240D7B17006610CB /* TabBar.swift */,
+				AAF18819240D7BA2006610CB /* HomeView.swift */,
+				AAF1881B240D7BAA006610CB /* BillView.swift */,
+				AAF1881D240D7BB5006610CB /* MarketplaceView.swift */,
+				AAF1881F240D7BC1006610CB /* ProfileView.swift */,
 				AA2F23FD240D74B100F3724E /* Assets.xcassets */,
 				AA2F2402240D74B100F3724E /* LaunchScreen.storyboard */,
 				AA2F2405240D74B100F3724E /* Info.plist */,
@@ -267,9 +282,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAF18820240D7BC1006610CB /* ProfileView.swift in Sources */,
 				AA2F23F8240D74B000F3724E /* AppDelegate.swift in Sources */,
 				AA2F23FA240D74B000F3724E /* SceneDelegate.swift in Sources */,
 				AA2F23FC240D74B000F3724E /* ContentView.swift in Sources */,
+				AAF1881E240D7BB5006610CB /* MarketplaceView.swift in Sources */,
+				AAF1881A240D7BA2006610CB /* HomeView.swift in Sources */,
+				AAF18818240D7B17006610CB /* TabBar.swift in Sources */,
+				AAF1881C240D7BAA006610CB /* BillView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

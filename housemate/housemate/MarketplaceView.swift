@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  MarketplaceView.swift
 //  housemate
 //
 //  Created by Ricky Zhang on 2020-03-02.
@@ -8,14 +8,14 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct MarketplaceView: View {
     var body: some View {
-        Text("hello")
+        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct MarketplaceView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        MarketplaceView()
     }
 }
