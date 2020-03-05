@@ -21,6 +21,7 @@ struct HomeView: View {
                     ProfileButtonView()
                 }
             }
+            .padding(.trailing, 16.0)
             
             SectionHeaderView(text: "Announcements")
             
