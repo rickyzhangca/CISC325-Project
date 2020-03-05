@@ -10,7 +10,31 @@ import SwiftUI
 
 struct ProfileView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            HStack {
+                Image(systemName: "person.circle.fill")
+                .font(.system(size: 100, weight: .light))
+                .imageScale(.medium)
+                .foregroundColor(Color(#colorLiteral(red: 0.662745098, green: 0.7333333333, blue: 0.831372549, alpha: 1)))
+                .frame(width: 120, height: 120)
+                
+                Text("Alice Bob")
+                    .font(.title)
+                
+                Spacer()
+            }
+            
+            List {
+                Text("Account")
+                Text("Notification")
+                Text("Accessibility")
+                Text("About")
+            }.frame(height: 180.0)
+            
+            Spacer()
+        }
+        .padding(.leading, 4.0)
+        .padding(.trailing, 16.0)
     }
 }
 
