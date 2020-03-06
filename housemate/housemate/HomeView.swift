@@ -10,38 +10,43 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
-        ScrollView {
-            VStack {
-                Text("123 Paris Hill St")
-                    .font(.largeTitle)
-                    .padding(.top, 32.0)
-                HStack (spacing: 24) {
-                    ProfileButtonView()
-                    ProfileButtonView()
-                    ProfileButtonView()
+        NavigationView {
+            ScrollView {
+                VStack {
+                    Text("123 Paris Hill St")
+                        .font(.largeTitle)
+                        .padding(.top, -32.0)
+                    HStack (spacing: 24.0) {
+                        ProfileButtonView()
+                        ProfileButtonView()
+                        ProfileButtonView()
+                    }
                 }
-            }
-            .padding(.trailing, 16.0)
-            
-            SectionHeaderView(text: "Announcements")
-            
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 12) {
-                    AnnouncementCardView()
-                    AnnouncementCardView()
+                .padding(.bottom, 16.0)
+                
+                SectionHeaderWithLinkView(text: "Announcements", seeAll: true, leading: 16.0, view: AnyView(AnnouncementsView()))
+                
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 12) {
+                        AnnouncementCardView()
+                            .padding(.leading, 16.0)
+                        AnnouncementCardView()
+                            .padding(.trailing, 16.0)
+                    }
                 }
+                
+                SectionHeaderWithLinkView(text: "House Tasks", seeAll: true, leading: 16.0, view: AnyView(TasksView()))
+                
+                VStack {
+                    HouseTaskView(checkState: false)
+                    HouseTaskView(checkState: false)
+                    HouseTaskView(checkState: false)
+                    HouseTaskView(checkState: false)
+                }
+                .padding(.leading, 16.0)
             }
-            
-            SectionHeaderView(text: "House Tasks")
-            
-            VStack {
-                HouseTaskView(checkState: false)
-                HouseTaskView(checkState: false)
-                HouseTaskView(checkState: false)
-                HouseTaskView(checkState: false)
-            }
+            Spacer()
         }
-        .padding(.leading, 16.0)
     }
 }
 
@@ -51,8 +56,37 @@ struct HomeView_Previews: PreviewProvider {
     }
 }
 
+struct SectionHeaderWithLinkView : View {
+    @State var text:String = "Section Header";
+    @State var seeAll:Bool = false;
+    @State var leading:CGFloat = 0.0;
+    var view: AnyView;
+    
+    var body: some View {
+        HStack() {
+            Text(self.text)
+                .font(.headline)
+            .multilineTextAlignment(.leading)
+            
+            Spacer()
+            
+            
+            NavigationLink(destination: view) {
+                Text("See All")
+                .foregroundColor(.blue)
+            }
+        }
+        .padding(.leading, self.leading)
+        .padding(.trailing, 16.0)
+        .padding(.top, 32.0)
+    }
+}
+
 struct SectionHeaderView : View {
     @State var text:String = "Section Header";
+    @State var seeAll:Bool = false;
+    @State var leading:CGFloat = 0.0;
+    
     var body: some View {
         HStack() {
             Text(self.text)
@@ -62,19 +96,22 @@ struct SectionHeaderView : View {
             
             Spacer()
         }
+        .padding(.leading, self.leading)
     }
 }
 
 struct ProfileButtonView : View {
     var body: some View {
-        VStack {
-            Image(systemName: "person.circle.fill")
-            .font(.system(size: 42, weight: .light))
-            .imageScale(.medium)
-            .foregroundColor(Color(#colorLiteral(red: 0.662745098, green: 0.7333333333, blue: 0.831372549, alpha: 1)))
-            .frame(width: 52, height: 48)
-            Text("Alice Bob")
-        }
+        NavigationLink(destination: HousemateView()) {
+            VStack {
+                Image(systemName: "person.circle.fill")
+                .font(.system(size: 42, weight: .light))
+                .imageScale(.medium)
+                .foregroundColor(Color(#colorLiteral(red: 0.662745098, green: 0.7333333333, blue: 0.831372549, alpha: 1)))
+                .frame(width: 52, height: 48)
+                Text("Alice Bob")
+            }
+        }.foregroundColor(Color.black)
     }
 }
 struct SmallProfilePhotoView : View {
@@ -118,7 +155,7 @@ struct HouseTaskView : View {
          )
          {
             HStack(spacing: 12) {
-                checkState == true ? Image(systemName: "checkmark.circle") : Image(systemName: "circle")
+                checkState == true ? Image(systemName: "checkmark.circle.fill") : Image(systemName: "circle")
                 Text("Todo  item ")
                 Spacer()
                 SmallProfilePhotoView()

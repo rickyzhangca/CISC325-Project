@@ -11,17 +11,8 @@ import SwiftUI
 struct ProfileView: View {
     var body: some View {
         VStack {
-            HStack {
-                Image(systemName: "person.circle.fill")
-                .font(.system(size: 100, weight: .light))
-                .imageScale(.medium)
-                .foregroundColor(Color(#colorLiteral(red: 0.662745098, green: 0.7333333333, blue: 0.831372549, alpha: 1)))
-                .frame(width: 120, height: 120)
-                
-                Text("Alice Bob")
-                    .font(.title)
-                
-                Spacer()
+            VStack {
+                ProfilePersonView()
             }
             
             List {
@@ -41,5 +32,22 @@ struct ProfileView: View {
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
         ProfileView()
+    }
+}
+
+struct ProfilePersonView: View {
+    @State var name:String = "Alice Bob";
+    var body: some View {
+        VStack {
+            Image(systemName: "person.circle.fill")
+            .font(.system(size: 100, weight: .light))
+            .imageScale(.medium)
+            .foregroundColor(Color(#colorLiteral(red: 0.662745098, green: 0.7333333333, blue: 0.831372549, alpha: 1)))
+            .frame(width: 120, height: 100)
+            .padding(.top, 32.0)
+            
+            Text(self.name)
+                .font(.title)
+        }
     }
 }

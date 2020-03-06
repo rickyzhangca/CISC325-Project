@@ -23,7 +23,9 @@ struct BillView: View {
             }
             .padding(.bottom, 32.0)
             
-            ButtonView(text: "Post a Split Bill", textColor: Color.blue)
+            NavigationLink(destination: NewSplitBillView()) {
+                ButtonView(text: "Post a Split Bill", textColor: Color.blue)
+            }.foregroundColor(Color.black)
 
             SectionHeaderView(text: "Upcoming Payments")
             VStack{
@@ -31,10 +33,14 @@ struct BillView: View {
                 BillCardView(title: "Kitchen Paper", amount: "$6 -> $3", recurring: false, text1: "Split Bill", text2: "1/2 Paid")
             }
             .padding(.bottom, 12.0)
+                    
+            NavigationLink(destination: BillView()) {
+                ButtonView(text: "Add a Payment", textColor: Color.blue)
+            }.foregroundColor(Color.black)
             
-            
-            ButtonView(text: "Add a Payment", borderColor: Color.gray)
-            ButtonView(text: "All Payments", borderColor: Color.gray)
+            NavigationLink(destination: AllPaymentView()) {
+                ButtonView(text: "All Payments", textColor: Color.blue)
+            }.foregroundColor(Color.black)
         }
         .padding(.leading, 16.0)
         .padding(.trailing, 16.0)
