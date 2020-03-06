@@ -10,24 +10,26 @@ import SwiftUI
 
 struct AllPaymentView: View {
     var body: some View {
-        ScrollView {
-            HStack {
-                Text("All Payments")
-                    .font(.largeTitle)
-                    .padding(.bottom, 24.0)
-                Spacer()
-            }
+        NavigationView {
+            ScrollView {
+                    HStack {
+                        Text("All Payments")
+                            .font(.largeTitle)
+                            .padding(.bottom, 24.0)
+                        Spacer()
+                    }
 
-            VStack{
-                FullBillCardView(title: "June Rent", amount: "$700", recurring: true, text1: "Monthly", text2: "1/4 Paid", dueDate: "Jun 1, 2020")
-                FullBillCardView(title: "Kitchen Paper", amount: "$6 -> $2", recurring: true, text1: "Split Bill", text2: "1/2 Paid", dueDate: "Jun 1, 2020")
-                FullBillCardView(title: "July Rent", amount: "$700", recurring: true, text1: "Monthly", text2: "0/4 Paid", dueDate: "Jul 1, 2020")
+                    VStack{
+                        FullBillCardView(title: "June Rent", amount: "$700", recurring: true, text1: "Monthly", text2: "1/4 Paid", dueDate: "Jun 1, 2020")
+                        FullBillCardView(title: "Kitchen Paper", amount: "$6 -> $2", recurring: true, text1: "Split Bill", text2: "1/2 Paid", dueDate: "Jun 1, 2020")
+                        FullBillCardView(title: "July Rent", amount: "$700", recurring: true, text1: "Monthly", text2: "0/4 Paid", dueDate: "Jul 1, 2020")
+                    }
+                    .padding(.bottom, 12.0)
+                }
+                .padding(.leading, 16.0)
+                .padding(.trailing, 16.0)
             }
-            .padding(.bottom, 12.0)
         }
-        .padding(.leading, 16.0)
-        .padding(.trailing, 16.0)
-    }
 }
 
 struct AllPaymentView_Previews: PreviewProvider {
@@ -43,6 +45,7 @@ struct FullBillCardView : View {
     @State var text1:String = "text";
     @State var text2:String = "text";
     @State var dueDate:String = "text";
+    @State var showPayButton:Bool = true;
     var body: some View {
         VStack {
             HStack{
@@ -74,8 +77,11 @@ struct FullBillCardView : View {
             .padding()
             .padding(.top, -12.0)
             
-            ButtonView(text: "Pay Now", textColor: Color.blue)
-                .padding(.horizontal, 12.0)
+            if showPayButton {
+                NavigationLink(destination: MakePaymentView()) {
+                    ButtonView(text: "Pay Now", textColor: Color.blue)
+                }.foregroundColor(Color.black)
+            }
         }
         .border(Color.gray, width: 2)
         .padding(.top, 12.0)

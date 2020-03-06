@@ -11,49 +11,51 @@ import SwiftUI
 struct NewSplitBillView: View {
     @State var toSplit: String = ""
     var body: some View {
-        ScrollView {
-            HStack {
-                Text("New Split Bill")
-                    .font(.largeTitle)
-                    .padding(.bottom, 24.0)
-                Spacer()
-            }
-
-            VStack {
+        NavigationView {
+            ScrollView {
                 HStack {
-                    Text("What are you splitting?")
+                    Text("New Split Bill")
+                        .font(.largeTitle)
+                        .padding(.bottom, 24.0)
                     Spacer()
                 }
-                TextField("Pizza?", text: $toSplit)
-                    .padding([.top, .leading, .bottom], 12.0)
-                    .border(Color.gray, width: 2)
-                
-                HStack {
+
+                VStack {
                     HStack {
-                        Text("Amount")
+                        Text("What are you splitting?")
                         Spacer()
                     }
                     TextField("Pizza?", text: $toSplit)
                         .padding([.top, .leading, .bottom], 12.0)
                         .border(Color.gray, width: 2)
                     
+                    HStack {
+                        HStack {
+                            Text("Amount")
+                            Spacer()
+                        }
+                        TextField("$CAD", text: $toSplit)
+                            .padding([.top, .leading, .bottom], 12.0)
+                            .border(Color.gray, width: 2)
+                        
+                    }
+                    .padding(.bottom, 24.0)
+                    
+                    HousemateSelectorView(checkState: true, name: "Ethan Ford")
+                    HousemateSelectorView(checkState: false)
+                    HousemateSelectorView(checkState: false, name: "Celine Devin")
                 }
-                .padding(.bottom, 24.0)
+                .padding(.trailing, 16.0)
+                .padding(.bottom, 16.0)
                 
-                HousemateSelectorView(checkState: true, name: "Ethan Ford")
-                HousemateSelectorView(checkState: false)
-                HousemateSelectorView(checkState: false, name: "Celine Devin")
+                NavigationLink(destination: BillView()) {
+                    ButtonView(text: "Post", textColor: Color.blue)
+                }
+                .foregroundColor(Color.black)
+                .padding(.trailing, 16.0)
             }
-            .padding(.trailing, 16.0)
-            .padding(.bottom, 16.0)
-            
-            NavigationLink(destination: BillView()) {
-                ButtonView(text: "Post", textColor: Color.blue)
-            }
-            .foregroundColor(Color.black)
-            .padding(.trailing, 16.0)
+            .padding(.leading, 16.0)
         }
-        .padding(.leading, 16.0)
     }
 }
 

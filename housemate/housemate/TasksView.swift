@@ -10,31 +10,33 @@ import SwiftUI
 
 struct TasksView: View {
     var body: some View {
-        ScrollView {
-            HStack {
-                Text("House Tasks")
-                    .font(.largeTitle)
-                Spacer()
-            }
+        NavigationView {
+            ScrollView {
+                HStack {
+                    Text("House Tasks")
+                        .font(.largeTitle)
+                    Spacer()
+                }
 
-            VStack {
-                HouseTaskView(checkState: false)
-                HouseTaskView(checkState: false)
-                HouseTaskView(checkState: false)
-                HouseTaskView(checkState: false)
-                
-                ButtonView(text: "Add Task", textColor: Color.blue)
-                    .padding(.trailing, 12.0)
-                
-                SectionHeaderView(text: "Completed")
-                
-                HouseTaskView(checkState: true)
-                HouseTaskView(checkState: true)
-                HouseTaskView(checkState: true)
-                HouseTaskView(checkState: true)
+                VStack {
+                    HouseTaskView(checkState: false)
+                    HouseTaskView(checkState: false)
+                    HouseTaskView(checkState: false)
+                    HouseTaskView(checkState: false)
+                    
+                    ButtonView(text: "Add Task", textColor: Color.blue)
+                        .padding(.trailing, 12.0)
+                    
+                    SectionHeaderView(text: "Completed")
+                    
+                    HouseTaskView(checkState: true)
+                    HouseTaskView(checkState: true)
+                    HouseTaskView(checkState: true)
+                    HouseTaskView(checkState: true)
+                }
             }
+            .padding(.leading, 16.0)
         }
-        .padding(.leading, 16.0)
     }
 }
 
