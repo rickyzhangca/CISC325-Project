@@ -13,14 +13,9 @@ struct MarketplaceView: View {
         NavigationView {
             ScrollView {
                 VStack {
-                    Text("123 Paris Hill St")
+                    Text("Kingston, ON")
                         .font(.largeTitle)
                         .padding(.top, -32.0)
-                    HStack (spacing: 24) {
-                        ProfileButtonView()
-                        ProfileButtonView()
-                        ProfileButtonView()
-                    }
                 }
                 .padding(.bottom, 32.0)
                 
@@ -85,51 +80,9 @@ struct MarketplaceCardView: View {
                     .padding(.vertical, 8.0)
                 Spacer()
             }
-            HStack {
-                VStack {
-                    Image(systemName: "photo")
-                    .font(.system(size: 30, weight: .light))
-                    .imageScale(.medium)
-                    .foregroundColor(Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)))
-                    .frame(height: 36)
-                }
-                .frame(width: 200, height: 160)
-                .background(Color(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)))
-                .border(Color.white, width: 2)
-                
-                VStack {
-                    VStack {
-                        Spacer()
-                        HStack {
-                            Spacer()
-                            Image(systemName: "photo")
-                            .font(.system(size: 30, weight: .light))
-                            .imageScale(.medium)
-                            .foregroundColor(Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)))
-                            .frame(height: 36)
-                            Spacer()
-                        }
-                        Spacer()
-                    }
-                    .background(Color(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)))
-                    .border(Color.white, width: 2)
-                    VStack {
-                        Spacer()
-                        HStack {
-                            Spacer()
-                            Image(systemName: "photo")
-                            .font(.system(size: 30, weight: .light))
-                            .imageScale(.medium)
-                            .foregroundColor(Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)))
-                            .frame(height: 36)
-                            Spacer()
-                        }
-                        Spacer()
-                    }
-                    .background(Color(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)))
-                    .border(Color.white, width: 2)
-                }
-            }
+            
+            GalleryView()
+            
             HStack {
                 Text("Large bedroom available for sublet May to August 2020. House recenty renovated with updated kitchen, new floo...")
                     .font(.callout)

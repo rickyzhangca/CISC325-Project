@@ -56,50 +56,6 @@ struct HomeView_Previews: PreviewProvider {
     }
 }
 
-struct SectionHeaderWithLinkView : View {
-    @State var text:String = "Section Header";
-    @State var seeAll:Bool = false;
-    @State var leading:CGFloat = 0.0;
-    var view: AnyView;
-    
-    var body: some View {
-        HStack() {
-            Text(self.text)
-                .font(.headline)
-            .multilineTextAlignment(.leading)
-            
-            Spacer()
-            
-            
-            NavigationLink(destination: view) {
-                Text("See All")
-                .foregroundColor(.blue)
-            }
-        }
-        .padding(.leading, self.leading)
-        .padding(.trailing, 16.0)
-        .padding(.top, 32.0)
-    }
-}
-
-struct SectionHeaderView : View {
-    @State var text:String = "Section Header";
-    @State var seeAll:Bool = false;
-    @State var leading:CGFloat = 0.0;
-    
-    var body: some View {
-        HStack() {
-            Text(self.text)
-                .font(.headline)
-            .multilineTextAlignment(.leading)
-            .padding(.top, 32.0)
-            
-            Spacer()
-        }
-        .padding(.leading, self.leading)
-    }
-}
-
 struct AnnouncementCardView : View {
     var body: some View {
         VStack(alignment: .leading) {
