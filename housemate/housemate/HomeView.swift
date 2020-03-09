@@ -100,32 +100,6 @@ struct SectionHeaderView : View {
     }
 }
 
-struct ProfileButtonView : View {
-    var body: some View {
-        NavigationLink(destination: HousemateView()) {
-            VStack {
-                Image(systemName: "person.circle.fill")
-                .font(.system(size: 42, weight: .light))
-                .imageScale(.medium)
-                .foregroundColor(Color(#colorLiteral(red: 0.662745098, green: 0.7333333333, blue: 0.831372549, alpha: 1)))
-                .frame(width: 52, height: 48)
-                Text("Alice Bob")
-            }
-        }.foregroundColor(Color.black)
-    }
-}
-struct SmallProfilePhotoView : View {
-    var body: some View {
-        VStack {
-            Image(systemName: "person.circle.fill")
-            .font(.system(size: 30, weight: .light))
-            .imageScale(.medium)
-            .foregroundColor(Color(#colorLiteral(red: 0.662745098, green: 0.7333333333, blue: 0.831372549, alpha: 1)))
-            .frame(width: 42, height: 36)
-        }
-    }
-}
-
 struct AnnouncementCardView : View {
     var body: some View {
         VStack(alignment: .leading) {

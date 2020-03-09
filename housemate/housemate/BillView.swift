@@ -55,27 +55,6 @@ struct BillView_Previews: PreviewProvider {
     }
 }
 
-struct ButtonView: View {
-    @State var text:String = "button";
-    @State var textColor:Color = Color.black;
-    @State var borderColor:Color = Color.blue;
-    var body: some View {
-        HStack {
-            Spacer()
-            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
-                Text(self.text)
-            }
-            Spacer()
-        }
-        .foregroundColor(self.textColor)
-        .padding(.vertical, 16.0)
-        .background(Color.white)
-        .border(self.borderColor, width: 2)
-        .cornerRadius(12.0, antialiased: true)
-        .padding(.bottom, 12.0)
-    }
-}
-
 struct BillCardView : View {
     @State var title:String = "text";
     @State var amount:String = "text";
