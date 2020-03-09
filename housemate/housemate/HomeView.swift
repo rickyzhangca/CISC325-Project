@@ -70,7 +70,7 @@ struct AnnouncementCardView : View {
             Spacer()
         }
         .frame(width: 260, height: 160)
-        .background(Color.blue)
+        .background(Color(#colorLiteral(red: 0.9345341325, green: 0.9346905947, blue: 0.9345135093, alpha: 1)))
     }
 }
 
@@ -88,6 +88,8 @@ struct HouseTaskView : View {
                 checkState == true ? Image(systemName: "checkmark.circle.fill") : Image(systemName: "circle")
                 Text("Todo  item ")
                 Spacer()
+                SmallProfilePhotoView()
+                    .padding(.trailing, -12.0)
                 SmallProfilePhotoView()
                     .padding(.trailing, 16.0)
             }

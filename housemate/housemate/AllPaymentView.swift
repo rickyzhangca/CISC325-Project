@@ -12,7 +12,7 @@ struct AllPaymentView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                    HStack {
+                HStack {
                         Text("All Payments")
                             .font(.largeTitle)
                             .padding(.bottom, 24.0)
@@ -28,8 +28,8 @@ struct AllPaymentView: View {
                 }
                 .padding(.leading, 16.0)
                 .padding(.trailing, 16.0)
-            }
         }
+    }
 }
 
 struct AllPaymentView_Previews: PreviewProvider {
