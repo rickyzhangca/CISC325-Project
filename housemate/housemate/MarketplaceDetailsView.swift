@@ -77,7 +77,9 @@ struct MarketplaceDetailsView: View {
                 }
                 
                 Spacer()
-                ButtonView(text: "Reply", textColor: Color.blue)
+                NavigationLink(destination: MarketplaceReplyView()) {
+                        ButtonView(text: "Reply", textColor: Color.blue)
+                }
         }
         .padding(.leading, 16.0)
         .padding(.trailing, 16.0)

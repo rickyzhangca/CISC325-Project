@@ -91,7 +91,7 @@ struct MarketplaceCardView: View {
             }
             HStack {
                 Spacer()
-                NavigationLink(destination: NewSplitBillView()) {
+                NavigationLink(destination: MarketplaceDetailsView()) {
                     Text("See more")
                         .foregroundColor(Color.blue)
                 }

@@ -17,6 +17,7 @@
 		AA2F241A240D74B200F3724E /* housemateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2F2419240D74B200F3724E /* housemateUITests.swift */; };
 		AA3E7732241689F100CFBEE7 /* UsefulViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3E7731241689F100CFBEE7 /* UsefulViews.swift */; };
 		AA3E77342416938E00CFBEE7 /* MarketplaceDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3E77332416938E00CFBEE7 /* MarketplaceDetailsView.swift */; };
+		AA3E77362416983700CFBEE7 /* MarketplaceReplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3E77352416983700CFBEE7 /* MarketplaceReplyView.swift */; };
 		AA9ECE842411A61800CAABBC /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9ECE832411A61800CAABBC /* TasksView.swift */; };
 		AA9ECE862411AD4100CAABBC /* AnnouncementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9ECE852411AD4100CAABBC /* AnnouncementsView.swift */; };
 		AAF18818240D7B17006610CB /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF18817240D7B17006610CB /* TabBar.swift */; };
@@ -64,6 +65,7 @@
 		AA2F241B240D74B200F3724E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA3E7731241689F100CFBEE7 /* UsefulViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsefulViews.swift; sourceTree = "<group>"; };
 		AA3E77332416938E00CFBEE7 /* MarketplaceDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceDetailsView.swift; sourceTree = "<group>"; };
+		AA3E77352416983700CFBEE7 /* MarketplaceReplyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceReplyView.swift; sourceTree = "<group>"; };
 		AA9ECE832411A61800CAABBC /* TasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
 		AA9ECE852411AD4100CAABBC /* AnnouncementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsView.swift; sourceTree = "<group>"; };
 		AAF18817240D7B17006610CB /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				AAF709DF241220D900A1CA0A /* MakePaymentView.swift */,
 				AAF1881D240D7BB5006610CB /* MarketplaceView.swift */,
 				AA3E77332416938E00CFBEE7 /* MarketplaceDetailsView.swift */,
+				AA3E77352416983700CFBEE7 /* MarketplaceReplyView.swift */,
 				AA3E7731241689F100CFBEE7 /* UsefulViews.swift */,
 				AAF1881F240D7BC1006610CB /* ProfileView.swift */,
 				AA2F23FD240D74B100F3724E /* Assets.xcassets */,
@@ -309,6 +312,7 @@
 				AA9ECE842411A61800CAABBC /* TasksView.swift in Sources */,
 				AA3E77342416938E00CFBEE7 /* MarketplaceDetailsView.swift in Sources */,
 				AAF709D62412134400A1CA0A /* HousemateView.swift in Sources */,
+				AA3E77362416983700CFBEE7 /* MarketplaceReplyView.swift in Sources */,
 				AAF18820240D7BC1006610CB /* ProfileView.swift in Sources */,
 				AA2F23F8240D74B000F3724E /* AppDelegate.swift in Sources */,
 				AA2F23FA240D74B000F3724E /* SceneDelegate.swift in Sources */,
