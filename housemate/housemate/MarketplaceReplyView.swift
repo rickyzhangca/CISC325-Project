@@ -12,7 +12,7 @@ struct MarketplaceReplyView: View {
     @State var toReply: String = ""
     var body: some View {
         NavigationView {
-            ScrollView {
+            VStack {
                 HStack {
                     Spacer()
                     Image(systemName: "mappin")
@@ -40,12 +40,14 @@ struct MarketplaceReplyView: View {
                             .frame(height: 360.0)
                             .border(Color.gray, width: 2)
                     
-                        Spacer()
-                        NavigationLink(destination: MarketplaceMessagesView()) {
-                                ButtonView(text: "Reply", textColor: Color.blue)
-                        }
+                        
                 }
                 .padding([.top, .leading, .trailing], 12.0)
+                Spacer()
+                NavigationLink(destination: MarketplaceMessagesView()) {
+                        ButtonView(text: "Reply", textColor: Color.blue)
+                }
+                .padding(.horizontal)
             }
         }
     }
