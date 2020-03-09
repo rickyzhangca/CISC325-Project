@@ -41,7 +41,7 @@ struct MarketplaceReplyView: View {
                             .border(Color.gray, width: 2)
                     
                         Spacer()
-                        NavigationLink(destination: MarketplaceReplyView()) {
+                        NavigationLink(destination: MarketplaceMessagesView()) {
                                 ButtonView(text: "Reply", textColor: Color.blue)
                         }
                 }
