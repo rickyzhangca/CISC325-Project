@@ -42,6 +42,7 @@ struct ButtonView: View {
 }
 
 struct ProfileButtonView : View {
+    @State var name:String = "Alice Bob";
     var body: some View {
         NavigationLink(destination: HousemateView()) {
             VStack {
@@ -50,7 +51,7 @@ struct ProfileButtonView : View {
                 .imageScale(.medium)
                 .foregroundColor(Color(#colorLiteral(red: 0.662745098, green: 0.7333333333, blue: 0.831372549, alpha: 1)))
                 .frame(width: 52, height: 48)
-                Text("Alice Bob")
+                Text(self.name)
             }
         }.foregroundColor(Color.black)
     }

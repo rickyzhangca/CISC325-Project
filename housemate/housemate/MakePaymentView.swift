@@ -13,7 +13,7 @@ struct MakePaymentView: View {
     var body: some View {
         ScrollView {
             HStack {
-                Text("All Payments")
+                Text("Make Payment")
                     .font(.largeTitle)
                     .padding(.bottom, 24.0)
                 Spacer()
@@ -39,7 +39,7 @@ struct MakePaymentView: View {
             .padding(.bottom, 12.0)
             
             NavigationLink(destination: AllPaymentView()) {
-                ButtonView(text: "Pay", textColor: Color.blue)
+                ButtonView(text: "Make", textColor: Color.blue)
             }
             .foregroundColor(Color.black)
         }

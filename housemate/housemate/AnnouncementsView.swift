@@ -18,9 +18,9 @@ struct AnnouncementsView: View {
             }
 
             VStack (spacing: 8.0) {
-                FullAnnouncementCardView()
-                FullAnnouncementCardView()
-                FullAnnouncementCardView()
+                FullAnnouncementCardView(announcement: "Welcome to 123 Paris Hill st everyone!")
+                FullAnnouncementCardView(announcement: "The landlord told us to tranfer the rent at the beginning of each month so I've set it up in the bill tab!")
+                    .frame(height: 160.0)
             }
             .padding(.trailing, 16.0)
             
@@ -39,6 +39,7 @@ struct AnnouncementsView_Previews: PreviewProvider {
 }
 
 struct FullAnnouncementCardView : View {
+    @State var announcement:String = "aaa";
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
@@ -47,7 +48,7 @@ struct FullAnnouncementCardView : View {
                     .padding([.leading, .bottom], 6.0)
                 Spacer()
             }
-            Text("fsargeshtsrhsthrthf")
+            Text(self.announcement)
                 .padding(.leading, 12.0)
                 .padding(.bottom, 12.0)
             Spacer()

@@ -19,17 +19,17 @@ struct TabBar: View {
             }
             .tag(0)
             BillView().tabItem {
-                selection == 1 ? Image(systemName: "play.circle.fill") : Image(systemName: "play.circle")
+                selection == 1 ? Image(systemName: "doc.text.fill") : Image(systemName: "doc.text")
                 Text("Bills")
             }
             .tag(1)
             MarketplaceView().tabItem {
-                selection == 2 ? Image(systemName: "play.circle.fill") : Image(systemName: "play.circle")
+                selection == 2 ? Image(systemName: "bed.double.fill") : Image(systemName: "bed.double")
                 Text("Marketplace")
             }
             .tag(2)
             ProfileView().tabItem {
-                selection == 3 ? Image(systemName: "play.circle.fill") : Image(systemName: "play.circle")
+                selection == 3 ? Image(systemName: "person.fill") : Image(systemName: "person")
                 Text("Profile")
             }
             .tag(3)
