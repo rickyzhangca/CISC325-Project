@@ -11,51 +11,49 @@ import SwiftUI
 struct MarketplaceMessagesView: View {
     @State var toReply: String = ""
     var body: some View {
-        NavigationView {
-            ScrollView {
-                HStack {
-                    Spacer()
-                    Image(systemName: "mappin")
-                    .font(.system(size: 30, weight: .light))
-                    .imageScale(.medium)
-                    Text("456 Pear Ave")
-                        .font(.largeTitle)
-                    Spacer()
-                }
-                .padding(.bottom, 16.0)
-                .padding(.top, -32.0)
-                HStack(spacing: 8.0) {
-                    RegularProfilePhotoView()
-                    RegularProfilePhotoView()
-                    RegularProfilePhotoView()
-                    HStack{
-                        Text("$500 + ")
-                            .fontWeight(.bold)
-                            .padding(.leading)
-                    }
-                }
-                .padding(.bottom)
-                VStack(spacing: 12.0) {
-                    OtherMessageCardView()
-                    UserMessageCardView()
-                    OtherMessageCardView()
-                    OtherMessageCardView()
-                    UserMessageCardView()
-                    Spacer()
-
-                    HStack {
-                        TextField("Youe message", text: $toReply)
-                            .padding(.all)
-                        .border(Color.gray, width: 2)
-                        Image(systemName: "paperplane")
-                        .font(.system(size: 24, weight: .light))
-                        .frame(width: 36, height: 36)
-                    }
-                    .padding(.top, 58.0)
+        ScrollView {
+            HStack {
+                Spacer()
+                Image(systemName: "mappin")
+                .font(.system(size: 30, weight: .light))
+                .imageScale(.medium)
+                Text("456 Pear Ave")
+                    .font(.largeTitle)
+                Spacer()
+            }
+            .padding(.bottom, 16.0)
+            .padding(.top, -32.0)
+            HStack(spacing: 8.0) {
+                RegularProfilePhotoView()
+                RegularProfilePhotoView()
+                RegularProfilePhotoView()
+                HStack{
+                    Text("$500 + ")
+                        .fontWeight(.bold)
+                        .padding(.leading)
                 }
             }
-            .padding(.horizontal)
+            .padding(.bottom)
+            VStack(spacing: 12.0) {
+                OtherMessageCardView()
+                UserMessageCardView()
+                OtherMessageCardView()
+                OtherMessageCardView()
+                UserMessageCardView()
+                Spacer()
+
+                HStack {
+                    TextField("Youe message", text: $toReply)
+                        .padding(.all)
+                    .border(Color.gray, width: 2)
+                    Image(systemName: "paperplane")
+                    .font(.system(size: 24, weight: .light))
+                    .frame(width: 36, height: 36)
+                }
+                .padding(.top, 58.0)
+            }
         }
+        .padding(.horizontal)
     }
 }
 

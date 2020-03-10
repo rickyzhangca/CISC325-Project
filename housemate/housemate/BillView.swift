@@ -10,42 +10,40 @@ import SwiftUI
 
 struct BillView: View {
     var body: some View {
-        NavigationView {
-            ScrollView {
-                VStack {
-                    Text("123 Paris Hill St")
-                        .font(.largeTitle)
-                        .padding(.top, -32.0)
-                    HStack (spacing: 24) {
-                        ProfileButtonView()
-                        ProfileButtonView()
-                        ProfileButtonView()
-                    }
+        ScrollView {
+            VStack {
+                Text("123 Paris Hill St")
+                    .font(.largeTitle)
+                    .padding(.top, -32.0)
+                HStack (spacing: 24) {
+                    ProfileButtonView()
+                    ProfileButtonView()
+                    ProfileButtonView()
                 }
-                .padding(.bottom, 32.0)
-                
-                NavigationLink(destination: NewSplitBillView()) {
-                    ButtonView(text: "Post a Split Bill", textColor: Color.blue)
-                }.foregroundColor(Color.black)
-
-                SectionHeaderView(text: "Upcoming Payments")
-                VStack{
-                    BillCardView(title: "June Rent", amount: "$700", recurring: true, text1: "Monthly", text2: "1/4 Paid")
-                    BillCardView(title: "Kitchen Paper", amount: "$6 -> $3", recurring: false, text1: "Split Bill", text2: "1/2 Paid")
-                }
-                .padding(.bottom, 12.0)
-                        
-                NavigationLink(destination: BillView()) {
-                    ButtonView(text: "Add a Payment", textColor: Color.blue)
-                }.foregroundColor(Color.black)
-                
-                NavigationLink(destination: AllPaymentView()) {
-                    ButtonView(text: "All Payments", textColor: Color.blue)
-                }.foregroundColor(Color.black)
             }
-            .padding(.leading, 16.0)
-            .padding(.trailing, 16.0)
+            .padding(.bottom, 32.0)
+            
+            NavigationLink(destination: NewSplitBillView()) {
+                ButtonView(text: "Post a Split Bill", textColor: Color.blue)
+            }.foregroundColor(Color.black)
+
+            SectionHeaderView(text: "Upcoming Payments")
+            VStack{
+                BillCardView(title: "June Rent", amount: "$700", recurring: true, text1: "Monthly", text2: "1/4 Paid")
+                BillCardView(title: "Kitchen Paper", amount: "$6 -> $3", recurring: false, text1: "Split Bill", text2: "1/2 Paid")
+            }
+            .padding(.bottom, 12.0)
+                    
+            NavigationLink(destination: MakePaymentView()) {
+                ButtonView(text: "Add a Payment", textColor: Color.blue)
+            }.foregroundColor(Color.black)
+            
+            NavigationLink(destination: AllPaymentView()) {
+                ButtonView(text: "All Payments", textColor: Color.blue)
+            }.foregroundColor(Color.black)
         }
+        .padding(.leading, 16.0)
+        .padding(.trailing, 16.0)
     }
 }
 

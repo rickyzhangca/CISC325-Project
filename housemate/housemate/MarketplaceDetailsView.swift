@@ -10,7 +10,6 @@ import SwiftUI
 
 struct MarketplaceDetailsView: View {
     var body: some View {
-        NavigationView {
             VStack {
                 ScrollView {
                         HStack {
@@ -22,8 +21,8 @@ struct MarketplaceDetailsView: View {
                                 .font(.largeTitle)
                             Spacer()
                         }
+                        .padding(.top, 16.0)
                         .padding(.bottom, 16.0)
-                        .padding(.top, -32.0)
                         HStack(spacing: 8.0) {
                             RegularProfilePhotoView()
                             RegularProfilePhotoView()
@@ -88,7 +87,6 @@ struct MarketplaceDetailsView: View {
                 }
                 .padding(.horizontal)
             }
-        }
     }
 }
 

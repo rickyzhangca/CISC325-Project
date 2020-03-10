@@ -22,8 +22,6 @@ struct MarketplaceReplyView: View {
                         .font(.largeTitle)
                     Spacer()
                 }
-                .padding(.bottom, 16.0)
-                .padding(.top, -32.0)
                 HStack(spacing: 8.0) {
                     RegularProfilePhotoView()
                     RegularProfilePhotoView()
@@ -39,8 +37,6 @@ struct MarketplaceReplyView: View {
                             .padding(12.0)
                             .frame(height: 360.0)
                             .border(Color.gray, width: 2)
-                    
-                        
                 }
                 .padding([.top, .leading, .trailing], 12.0)
                 Spacer()

@@ -10,8 +10,9 @@ import SwiftUI
 
 struct NewSplitBillView: View {
     @State var toSplit: String = ""
+    @State var toAmount: String = ""
     var body: some View {
-        NavigationView {
+        VStack {
             ScrollView {
                 HStack {
                     Text("New Split Bill")
@@ -34,7 +35,7 @@ struct NewSplitBillView: View {
                             Text("Amount")
                             Spacer()
                         }
-                        TextField("$CAD", text: $toSplit)
+                        TextField("$CAD", text: $toAmount)
                             .padding([.top, .leading, .bottom], 12.0)
                             .border(Color.gray, width: 2)
                         
@@ -47,14 +48,17 @@ struct NewSplitBillView: View {
                 }
                 .padding(.trailing, 16.0)
                 .padding(.bottom, 16.0)
-                
-                NavigationLink(destination: BillView()) {
-                    ButtonView(text: "Post", textColor: Color.blue)
-                }
-                .foregroundColor(Color.black)
-                .padding(.trailing, 16.0)
             }
             .padding(.leading, 16.0)
+            
+            Spacer()
+            
+            NavigationLink(destination: BillView()) {
+                ButtonView(text: "Post", textColor: Color.blue)
+            }
+            .foregroundColor(Color.black)
+            .padding(.leading, 16.0)
+            .padding(.trailing, 16.0)
         }
     }
 }

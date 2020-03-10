@@ -10,42 +10,39 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
-        NavigationView {
-            ScrollView {
-                VStack {
-                    Text("123 Paris Hill St")
-                        .font(.largeTitle)
-                        .padding(.top, -32.0)
-                    HStack (spacing: 24.0) {
-                        ProfileButtonView()
-                        ProfileButtonView()
-                        ProfileButtonView()
-                    }
+        ScrollView {
+            VStack {
+                Text("123 Paris Hill St")
+                    .font(.largeTitle)
+                    .padding(.top, -32.0)
+                HStack (spacing: 24.0) {
+                    ProfileButtonView()
+                    ProfileButtonView()
+                    ProfileButtonView()
                 }
-                .padding(.bottom, 16.0)
-                
-                SectionHeaderWithLinkView(text: "Announcements", seeAll: true, leading: 16.0, view: AnyView(AnnouncementsView()))
-                
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 12) {
-                        AnnouncementCardView()
-                            .padding(.leading, 16.0)
-                        AnnouncementCardView()
-                            .padding(.trailing, 16.0)
-                    }
-                }
-                
-                SectionHeaderWithLinkView(text: "House Tasks", seeAll: true, leading: 16.0, view: AnyView(TasksView()))
-                
-                VStack {
-                    HouseTaskView(checkState: false)
-                    HouseTaskView(checkState: false)
-                    HouseTaskView(checkState: false)
-                    HouseTaskView(checkState: false)
-                }
-                .padding(.leading, 16.0)
             }
-            Spacer()
+            .padding(.bottom, 16.0)
+            
+            SectionHeaderWithLinkView(text: "Announcements", seeAll: true, leading: 16.0, view: AnyView(AnnouncementsView()))
+            
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 12) {
+                    AnnouncementCardView()
+                        .padding(.leading, 16.0)
+                    AnnouncementCardView()
+                        .padding(.trailing, 16.0)
+                }
+            }
+            
+            SectionHeaderWithLinkView(text: "House Tasks", seeAll: true, leading: 16.0, view: AnyView(TasksView()))
+            
+            VStack {
+                HouseTaskView(checkState: false)
+                HouseTaskView(checkState: false)
+                HouseTaskView(checkState: false)
+                HouseTaskView(checkState: false)
+            }
+            .padding(.leading, 16.0)
         }
     }
 }

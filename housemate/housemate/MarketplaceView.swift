@@ -10,35 +10,33 @@ import SwiftUI
 
 struct MarketplaceView: View {
     var body: some View {
-        NavigationView {
-            ScrollView {
-                VStack {
-                    Text("Kingston, ON")
-                        .font(.largeTitle)
-                        .padding(.top, -32.0)
-                }
-                .padding(.bottom, 32.0)
-                
-                HStack {
-                    NavigationLink(destination: NewSplitBillView()) {
-                        ButtonView(text: "Filters", textColor: Color.blue, borderColor: Color.white)
-                    }.foregroundColor(Color.black)
+        ScrollView {
+            VStack {
+                Text("Kingston, ON")
+                    .font(.largeTitle)
+                    .padding(.top, -32.0)
+            }
+            .padding(.bottom, 32.0)
+            
+            HStack {
+                NavigationLink(destination: NewSplitBillView()) {
+                    ButtonView(text: "Filters", textColor: Color.blue, borderColor: Color.white)
+                }.foregroundColor(Color.black)
 
-                    NavigationLink(destination: NewSplitBillView()) {
-                        ButtonView(text: "Post a Room", textColor: Color.blue, borderColor: Color.white)
-                    }.foregroundColor(Color.black)
+                NavigationLink(destination: NewSplitBillView()) {
+                    ButtonView(text: "Post a Room", textColor: Color.blue, borderColor: Color.white)
+                }.foregroundColor(Color.black)
 
-                    NavigationLink(destination: NewSplitBillView()) {
-                        ButtonView(text: "Messasges", textColor: Color.blue, borderColor: Color.white)
-                    }.foregroundColor(Color.black)
-                }
-                
-                MarketplaceCardView()
-                MarketplaceCardView()
-                MarketplaceCardView()
-                MarketplaceCardView()
-            }.padding(.horizontal, 12.0)
-        }
+                NavigationLink(destination: NewSplitBillView()) {
+                    ButtonView(text: "Messasges", textColor: Color.blue, borderColor: Color.white)
+                }.foregroundColor(Color.black)
+            }
+            
+            MarketplaceCardView()
+            MarketplaceCardView()
+            MarketplaceCardView()
+            MarketplaceCardView()
+        }.padding(.horizontal, 12.0)
     }
 }
 
