@@ -20,6 +20,18 @@ struct UsefulViews_Previews: PreviewProvider {
     }
 }
 
+struct MyButtonStyle: ButtonStyle {
+    var color: Color = .blue
+    public func makeBody(configuration: MyButtonStyle.Configuration) -> some View {
+        
+        configuration.label
+            .foregroundColor(self.color)
+            .padding(.vertical, 16.0)
+            .padding(.horizontal, 16.0)
+            .border(self.color, width: 2)
+            .cornerRadius(12.0, antialiased: true)
+    }
+}
 struct ButtonView: View {
     @State var text:String = "button";
     @State var textColor:Color = Color.black;

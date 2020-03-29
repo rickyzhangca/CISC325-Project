@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct TasksView: View {
+    var tasks: [Task] = []
+    
     var body: some View {
         ScrollView {
             HStack {
@@ -18,23 +20,25 @@ struct TasksView: View {
             }
 
             VStack {
-                HouseTaskView(checkState: false)
-                HouseTaskView(checkState: false)
-                HouseTaskView(checkState: false)
-                HouseTaskView(checkState: false)
+                ForEach(tasks) { t in
+                    if t.checkState == false{
+                        HouseTaskView(checkState: t.checkState, task: t.name, num_users: t.num_users)
+                    }
+                }
                 
                 ButtonView(text: "Add Task", textColor: Color.blue)
                     .padding(.trailing, 12.0)
                 
                 SectionHeaderView(text: "Completed")
                 
-                HouseTaskView(checkState: true)
-                HouseTaskView(checkState: true)
-                HouseTaskView(checkState: true)
-                HouseTaskView(checkState: true)
+                ForEach(tasks) { t in
+                    if t.checkState == true{
+                        HouseTaskView(checkState: t.checkState, task: t.name, num_users: t.num_users)
+                    }
+                }
             }
         }
-        .padding(.leading, 16.0)
+        .padding(.horizontal, 16.0)
     }
 }
 

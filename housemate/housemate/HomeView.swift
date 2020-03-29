@@ -9,16 +9,19 @@
 import SwiftUI
 
 struct HomeView: View {
+    
+    @EnvironmentObject var truth: SourceOfTruth
+    
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack {
-                    Text("123 Paris Hill St")
+                    Text(self.truth.Data_House.address)
                         .font(.largeTitle)
                     HStack (spacing: 24.0) {
-                        ProfileButtonView(name:"Alice Bob")
-                        ProfileButtonView(name: "Celine David")
-                        ProfileButtonView(name: "Ella Field")
+                        ForEach(self.truth.Data_Housemates) { h in
+                            ProfileButtonView(name:h.name)
+                        }
                     }
                 }
                 .padding(.bottom, 16.0)
@@ -26,22 +29,23 @@ struct HomeView: View {
                 SectionHeaderWithLinkView(text: "Announcements", seeAll: true, leading: 16.0, view: AnyView(AnnouncementsView()))
                 
                 ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 12) {
-                        AnnouncementCardView(announcement: "Welcome to 123 Paris Hill st everyone!")
-                            .padding(.leading, 16.0)
-                        AnnouncementCardView(announcement: "The landlord told us to tranfer the rent at the beginning of each month so I've set it up in the bill tab!")
-                            .padding(.trailing, 16.0)
+                    HStack() {
+                        ForEach(self.truth.Data_Announcements) { a in
+                            AnnouncementCardView(text: a.text)
+                            .padding(.leading, 12.0)
+                        }
                     }
+                    .padding(.trailing)
                 }
                 
                 SectionHeaderWithLinkView(text: "House Tasks", seeAll: true, leading: 16.0, view: AnyView(TasksView()))
                 
                 VStack {
-                    HouseTaskView(checkState: false, task: "Sweep floors")
-                    HouseTaskView(checkState: false, task: "Take out garbage")
-                    HouseTaskView(checkState: false, task: "Clean up the mess Lee made")
+                    ForEach(self.truth.Data_Tasks) { t in
+                        HouseTaskView(checkState: t.checkState, task: t.name, num_users: t.num_users)
+                    }
                 }
-                .padding(.leading, 16.0)
+                .padding(.horizontal)
             }
         }
     }
@@ -49,12 +53,12 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeView().environmentObject(SourceOfTruth())
     }
 }
 
 struct AnnouncementCardView : View {
-    @State var announcement:String = "aaa";
+    @State var text:String = "aaa";
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
@@ -63,7 +67,7 @@ struct AnnouncementCardView : View {
                     .padding([.leading, .bottom], 6.0)
                 Spacer()
             }
-            Text(self.announcement)
+            Text(self.text)
                 .padding(.leading, 12.0)
             Spacer()
         }
@@ -75,6 +79,8 @@ struct AnnouncementCardView : View {
 struct HouseTaskView : View {
     @State var checkState:Bool = false;
     @State var task:String = "to do";
+    @State var num_users:Int = 1;
+    
     var body: some View {
         Button(action:
             {
@@ -86,11 +92,15 @@ struct HouseTaskView : View {
             HStack(spacing: 12) {
                 checkState == true ? Image(systemName: "checkmark.circle.fill") : Image(systemName: "circle")
                 Text(self.task)
+                
                 Spacer()
-                SmallProfilePhotoView()
-                    .padding(.trailing, -12.0)
-                SmallProfilePhotoView()
-                    .padding(.trailing, 16.0)
+                
+                HStack {
+                    ForEach(0 ..< self.num_users) {_ in
+                        SmallProfilePhotoView()
+                            .padding(.leading, -12.0)
+                    }
+                }
             }
         }
         .foregroundColor(Color.black)

@@ -9,7 +9,12 @@
 import SwiftUI
 
 struct MakePaymentView: View {
-    @State var toSplit: String = ""
+    
+    @EnvironmentObject var truth: SourceOfTruth
+    
+    @State var topay: String = ""
+    @State var index: Int = 0
+    
     var body: some View {
         ScrollView {
             HStack {
@@ -20,7 +25,7 @@ struct MakePaymentView: View {
             }
 
             VStack{
-                FullBillCardView(title: "June Rent", amount: "$700", recurring: true, text1: "Monthly", text2: "1/4 Paid", dueDate: "Jun 1, 2020", showPayButton: false)
+                FullBillCardView(name: self.truth.Data_Payments[self.index].name, amount: self.truth.Data_Payments[self.index].amount, recurring: self.truth.Data_Payments[self.index].recurring, num_users_to_pay: self.truth.Data_Payments[self.index].num_users_to_pay, num_users_paid: self.truth.Data_Payments[self.index].num_users_paid, dueDate:self.truth.Data_Payments[self.index].due_date, showPayButton: false, index: self.index)
                 
                 SectionHeaderView(text: "Payment Method")
                 
@@ -29,7 +34,7 @@ struct MakePaymentView: View {
                         Text("Amount")
                         Spacer()
                     }
-                    TextField("$CAD", text: $toSplit)
+                    TextField("$CAD", text: $topay)
                         .padding([.top, .leading, .bottom], 12.0)
                         .border(Color.gray, width: 2)
                     
@@ -37,11 +42,23 @@ struct MakePaymentView: View {
                 .padding(.bottom, 24.0)
             }
             .padding(.bottom, 12.0)
-            
-            NavigationLink(destination: AllPaymentView()) {
-                ButtonView(text: "Make", textColor: Color.blue)
+                        
+            NavigationLink(destination: BillView()) {
+                Button(action:{
+                    let temp = Int(self.topay)
+                    print(self.topay)
+                    if temp == self.truth.Data_Payments[self.index].amount {
+                        self.truth.Data_Payments[self.index].amount = 0
+                    }
+                    else {
+                        self.truth.Data_Payments[self.index].amount -= temp ?? 99999
+                    }
+                }) {
+                    Text("Pay")
+                        .frame(minWidth: 0, maxWidth: .infinity)
+                }.buttonStyle(MyButtonStyle(color: .blue))
             }
-            .foregroundColor(Color.black)
+            
         }
         .padding(.leading, 16.0)
         .padding(.trailing, 16.0)
@@ -50,6 +67,6 @@ struct MakePaymentView: View {
 
 struct MakePaymentView_Previews: PreviewProvider {
     static var previews: some View {
-        MakePaymentView()
+        MakePaymentView().environmentObject(SourceOfTruth())
     }
 }

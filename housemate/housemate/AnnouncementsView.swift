@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct AnnouncementsView: View {
+    var announcements: [Announcement] = []
+    
     var body: some View {
         ScrollView {
             HStack {
@@ -18,9 +20,10 @@ struct AnnouncementsView: View {
             }
 
             VStack (spacing: 8.0) {
-                FullAnnouncementCardView(announcement: "Welcome to 123 Paris Hill st everyone!")
-                FullAnnouncementCardView(announcement: "The landlord told us to tranfer the rent at the beginning of each month so I've set it up in the bill tab!")
+                ForEach(announcements) { a in
+                    FullAnnouncementCardView(text: a.text)
                     .frame(height: 160.0)
+                }
             }
             .padding(.trailing, 16.0)
             
@@ -39,7 +42,7 @@ struct AnnouncementsView_Previews: PreviewProvider {
 }
 
 struct FullAnnouncementCardView : View {
-    @State var announcement:String = "aaa";
+    @State var text:String = "aaa";
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
@@ -48,7 +51,7 @@ struct FullAnnouncementCardView : View {
                     .padding([.leading, .bottom], 6.0)
                 Spacer()
             }
-            Text(self.announcement)
+            Text(self.text)
                 .padding(.leading, 12.0)
                 .padding(.bottom, 12.0)
             Spacer()

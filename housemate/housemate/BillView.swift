@@ -9,16 +9,19 @@
 import SwiftUI
 
 struct BillView: View {
+    
+    @EnvironmentObject var truth: SourceOfTruth
+    
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack {
-                    Text("123 Paris Hill St")
+                    Text(self.truth.Data_House.address)
                         .font(.largeTitle)
-                    HStack (spacing: 24) {
-                        ProfileButtonView()
-                        ProfileButtonView()
-                        ProfileButtonView()
+                    HStack (spacing: 24.0) {
+                        ForEach(self.truth.Data_Housemates) { h in
+                            ProfileButtonView(name:h.name)
+                        }
                     }
                 }
                 .padding(.bottom, 32.0)
@@ -29,13 +32,16 @@ struct BillView: View {
 
                 SectionHeaderView(text: "Upcoming Payments")
                 VStack{
-                    BillCardView(title: "June Rent", amount: "$700", recurring: true, text1: "Monthly", text2: "1/4 Paid")
-                    BillCardView(title: "Kitchen Paper", amount: "$6 -> $3", recurring: false, text1: "Split Bill", text2: "1/2 Paid")
+                    ForEach(0..<truth.Data_Payments.count) { i in
+                        if self.truth.Data_Payments[i].amount != 0 {
+                            BillCardView(name: self.truth.Data_Payments[i].name, amount: self.truth.Data_Payments[i].amount, recurring: self.truth.Data_Payments[i].recurring, num_users_to_pay: self.truth.Data_Payments[i].num_users_to_pay, num_users_paid: self.truth.Data_Payments[i].num_users_paid, index: i)
+                        }
+                    }
                 }
                 .padding(.bottom, 12.0)
                         
-                NavigationLink(destination: MakePaymentView()) {
-                    ButtonView(text: "Make a Payment", textColor: Color.blue)
+                NavigationLink(destination: AddPaymentView()) {
+                    ButtonView(text: "Add a Payment", textColor: Color.blue)
                 }.foregroundColor(Color.black)
                 
                 NavigationLink(destination: AllPaymentView()) {
@@ -50,39 +56,45 @@ struct BillView: View {
 
 struct BillView_Previews: PreviewProvider {
     static var previews: some View {
-        BillView()
+        BillView().environmentObject(SourceOfTruth())
     }
 }
 
 struct BillCardView : View {
-    @State var title:String = "text";
-    @State var amount:String = "text";
-    @State var recurring:Bool = false;
-    @State var text1:String = "text";
-    @State var text2:String = "text";
+    @State var name: String
+    @State var amount: Int = 1
+    @State var recurring: String = ""
+    @State var num_users_to_pay: Int = 4
+    @State var num_users_paid: Int = 1
+    @State var index: Int = 0
+    
     var body: some View {
-        VStack {
-            HStack{
-                Text(self.title)
-                    .fontWeight(.medium)
-                Spacer()
-                Text(self.amount)
-                    .fontWeight(.semibold)
+        NavigationLink(destination: MakePaymentView(index: self.index)) {
+            VStack {
+                HStack{
+                    Text(self.name)
+                        .fontWeight(.medium)
+                        .foregroundColor(Color.black)
+                    Spacer()
+                    Text("$\(self.amount)")
+                        .fontWeight(.bold)
+                        .foregroundColor(Color.black)
+                }
+                .padding()
+                Divider().frame(height: -20.0)
+                HStack{
+                    Text(self.recurring)
+                        .font(.callout)
+                        .foregroundColor(Color.blue)
+                    Spacer()
+                    Text("\(self.num_users_paid)/\(self.num_users_to_pay) Paid")
+                        .font(.callout)
+                        .foregroundColor(Color.blue)
+                }
+                .padding()
             }
-            .padding()
-            Divider().frame(height: -20.0)
-            HStack{
-                Text(self.text1)
-                    .font(.callout)
-                    .foregroundColor(Color.blue)
-                Spacer()
-                Text(self.text2)
-                    .font(.callout)
-                    .foregroundColor(Color.blue)
-            }
-            .padding()
-        }
-        .border(Color.gray, width: 2)
-        .padding(.top, 12.0)
+            .border(Color.gray, width: 2)
+            .padding(.top, 12.0)
+        }.foregroundColor(Color.black)
     }
 }

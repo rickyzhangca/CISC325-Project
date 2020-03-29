@@ -9,6 +9,12 @@
 import SwiftUI
 
 struct TabBar: View {
+    @EnvironmentObject var truth: SourceOfTruth
+    
+    var tasks: [Task] = []
+    var announcements: [Announcement] = []
+    var house: House = House(address: "temp")
+    
     @State private var selection = 0
     
     var body: some View {
@@ -40,6 +46,6 @@ struct TabBar: View {
 
 struct TabBar_Previews: PreviewProvider {
     static var previews: some View {
-        TabBar().previewDevice("iPhone 11 Pro Max")
+        TabBar().previewDevice("iPhone 11 Pro Max").environmentObject(SourceOfTruth())
     }
 }

@@ -21,6 +21,13 @@
 		AA3E773824169B1B00CFBEE7 /* MarketplaceMessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3E773724169B1B00CFBEE7 /* MarketplaceMessagesView.swift */; };
 		AA9ECE842411A61800CAABBC /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9ECE832411A61800CAABBC /* TasksView.swift */; };
 		AA9ECE862411AD4100CAABBC /* AnnouncementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9ECE852411AD4100CAABBC /* AnnouncementsView.swift */; };
+		AABB2BE7242FFC7D003072BD /* Data_Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABB2BE6242FFC7D003072BD /* Data_Tasks.swift */; };
+		AABB2BEA2430044A003072BD /* Data_Announcements.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABB2BE92430044A003072BD /* Data_Announcements.swift */; };
+		AABB2BEC24300650003072BD /* Data_Housemates.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABB2BEB24300650003072BD /* Data_Housemates.swift */; };
+		AABB2BEE243006D6003072BD /* Data_House.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABB2BED243006D6003072BD /* Data_House.swift */; };
+		AABB2BF02430102E003072BD /* Data_Payments.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABB2BEF2430102E003072BD /* Data_Payments.swift */; };
+		AAD61F4624307BCF00E89514 /* Data_Truth.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD61F4524307BCF00E89514 /* Data_Truth.swift */; };
+		AAD61F482431000A00E89514 /* AddPaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD61F472431000A00E89514 /* AddPaymentView.swift */; };
 		AAF18818240D7B17006610CB /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF18817240D7B17006610CB /* TabBar.swift */; };
 		AAF1881A240D7BA2006610CB /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF18819240D7BA2006610CB /* HomeView.swift */; };
 		AAF1881C240D7BAA006610CB /* BillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF1881B240D7BAA006610CB /* BillView.swift */; };
@@ -70,6 +77,13 @@
 		AA3E773724169B1B00CFBEE7 /* MarketplaceMessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceMessagesView.swift; sourceTree = "<group>"; };
 		AA9ECE832411A61800CAABBC /* TasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
 		AA9ECE852411AD4100CAABBC /* AnnouncementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsView.swift; sourceTree = "<group>"; };
+		AABB2BE6242FFC7D003072BD /* Data_Tasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data_Tasks.swift; sourceTree = "<group>"; };
+		AABB2BE92430044A003072BD /* Data_Announcements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data_Announcements.swift; sourceTree = "<group>"; };
+		AABB2BEB24300650003072BD /* Data_Housemates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data_Housemates.swift; sourceTree = "<group>"; };
+		AABB2BED243006D6003072BD /* Data_House.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data_House.swift; sourceTree = "<group>"; };
+		AABB2BEF2430102E003072BD /* Data_Payments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data_Payments.swift; sourceTree = "<group>"; };
+		AAD61F4524307BCF00E89514 /* Data_Truth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data_Truth.swift; sourceTree = "<group>"; };
+		AAD61F472431000A00E89514 /* AddPaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPaymentView.swift; sourceTree = "<group>"; };
 		AAF18817240D7B17006610CB /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		AAF18819240D7BA2006610CB /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		AAF1881B240D7BAA006610CB /* BillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillView.swift; sourceTree = "<group>"; };
@@ -146,10 +160,17 @@
 				AA3E77352416983700CFBEE7 /* MarketplaceReplyView.swift */,
 				AA3E773724169B1B00CFBEE7 /* MarketplaceMessagesView.swift */,
 				AA3E7731241689F100CFBEE7 /* UsefulViews.swift */,
+				AAD61F472431000A00E89514 /* AddPaymentView.swift */,
 				AAF1881F240D7BC1006610CB /* ProfileView.swift */,
 				AA2F23FD240D74B100F3724E /* Assets.xcassets */,
 				AA2F2402240D74B100F3724E /* LaunchScreen.storyboard */,
 				AA2F2405240D74B100F3724E /* Info.plist */,
+				AABB2BE6242FFC7D003072BD /* Data_Tasks.swift */,
+				AABB2BE92430044A003072BD /* Data_Announcements.swift */,
+				AABB2BEB24300650003072BD /* Data_Housemates.swift */,
+				AABB2BED243006D6003072BD /* Data_House.swift */,
+				AABB2BEF2430102E003072BD /* Data_Payments.swift */,
+				AAD61F4524307BCF00E89514 /* Data_Truth.swift */,
 				AA2F23FF240D74B100F3724E /* Preview Content */,
 			);
 			path = housemate;
@@ -314,6 +335,8 @@
 			files = (
 				AA9ECE842411A61800CAABBC /* TasksView.swift in Sources */,
 				AA3E77342416938E00CFBEE7 /* MarketplaceDetailsView.swift in Sources */,
+				AABB2BEC24300650003072BD /* Data_Housemates.swift in Sources */,
+				AABB2BEA2430044A003072BD /* Data_Announcements.swift in Sources */,
 				AAF709D62412134400A1CA0A /* HousemateView.swift in Sources */,
 				AA3E77362416983700CFBEE7 /* MarketplaceReplyView.swift in Sources */,
 				AAF18820240D7BC1006610CB /* ProfileView.swift in Sources */,
@@ -321,15 +344,20 @@
 				AA2F23FA240D74B000F3724E /* SceneDelegate.swift in Sources */,
 				AAF709DA2412168D00A1CA0A /* NewSplitBillView.swift in Sources */,
 				AA3E7732241689F100CFBEE7 /* UsefulViews.swift in Sources */,
+				AABB2BF02430102E003072BD /* Data_Payments.swift in Sources */,
 				AA2F23FC240D74B000F3724E /* ContentView.swift in Sources */,
 				AAF1881E240D7BB5006610CB /* MarketplaceView.swift in Sources */,
 				AAF709DC24121EA700A1CA0A /* AllPaymentView.swift in Sources */,
+				AABB2BEE243006D6003072BD /* Data_House.swift in Sources */,
 				AAF1881A240D7BA2006610CB /* HomeView.swift in Sources */,
+				AAD61F482431000A00E89514 /* AddPaymentView.swift in Sources */,
 				AAF18818240D7B17006610CB /* TabBar.swift in Sources */,
 				AAF709E0241220D900A1CA0A /* MakePaymentView.swift in Sources */,
 				AAF1881C240D7BAA006610CB /* BillView.swift in Sources */,
 				AA3E773824169B1B00CFBEE7 /* MarketplaceMessagesView.swift in Sources */,
+				AAD61F4624307BCF00E89514 /* Data_Truth.swift in Sources */,
 				AA9ECE862411AD4100CAABBC /* AnnouncementsView.swift in Sources */,
+				AABB2BE7242FFC7D003072BD /* Data_Tasks.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,6 +9,9 @@
 import SwiftUI
 
 struct AllPaymentView: View {
+    
+    @EnvironmentObject var truth: SourceOfTruth
+    
     var body: some View {
         ScrollView {
         HStack {
@@ -19,9 +22,11 @@ struct AllPaymentView: View {
             }
 
             VStack{
-                FullBillCardView(title: "June Rent", amount: "$700", recurring: true, text1: "Monthly", text2: "1/4 Paid", dueDate: "Jun 1, 2020")
-                FullBillCardView(title: "Kitchen Paper", amount: "$6 -> $2", recurring: true, text1: "Split Bill", text2: "1/2 Paid", dueDate: "Jun 1, 2020")
-                FullBillCardView(title: "July Rent", amount: "$700", recurring: true, text1: "Monthly", text2: "0/4 Paid", dueDate: "Jul 1, 2020")
+                ForEach(0..<truth.Data_Payments.count) { i in
+                    if self.truth.Data_Payments[i].amount != 0 {
+                        FullBillCardView(name: self.truth.Data_Payments[i].name, amount: self.truth.Data_Payments[i].amount, recurring: self.truth.Data_Payments[i].recurring, num_users_to_pay: self.truth.Data_Payments[i].num_users_to_pay, num_users_paid: self.truth.Data_Payments[i].num_users_paid, dueDate:self.truth.Data_Payments[i].due_date, showPayButton: true, index: i)
+                    }
+                }
             }
             .padding(.bottom, 12.0)
         }
@@ -32,35 +37,36 @@ struct AllPaymentView: View {
 
 struct AllPaymentView_Previews: PreviewProvider {
     static var previews: some View {
-        AllPaymentView()
+        AllPaymentView().environmentObject(SourceOfTruth())
     }
 }
 
 struct FullBillCardView : View {
-    @State var title:String = "text";
-    @State var amount:String = "text";
-    @State var recurring:Bool = false;
-    @State var text1:String = "text";
-    @State var text2:String = "text";
+    @State var name: String
+    @State var amount: Int = 1
+    @State var recurring: String = ""
+    @State var num_users_to_pay: Int = 4
+    @State var num_users_paid: Int = 1
     @State var dueDate:String = "text";
     @State var showPayButton:Bool = true;
+    @State var index: Int = 0
     var body: some View {
         VStack {
             HStack{
-                Text(self.title)
+                Text(self.name)
                     .fontWeight(.medium)
                 Spacer()
-                Text(self.amount)
+                Text("$\(self.amount)")
                     .fontWeight(.semibold)
             }
             .padding()
             Divider().frame(height: -20.0)
             HStack{
-                Text(self.text1)
+                Text(self.recurring)
                     .font(.callout)
                     .foregroundColor(Color.blue)
                 Spacer()
-                Text(self.text2)
+                Text("\(self.num_users_paid)/\(self.num_users_to_pay) Paid")
                     .font(.callout)
                     .foregroundColor(Color.blue)
             }
@@ -76,7 +82,7 @@ struct FullBillCardView : View {
             .padding(.top, -12.0)
             
             if showPayButton {
-                NavigationLink(destination: MakePaymentView()) {
+                NavigationLink(destination: MakePaymentView(index: self.index)) {
                     ButtonView(text: "Pay Now", textColor: Color.blue)
                 }.foregroundColor(Color.black)
             }

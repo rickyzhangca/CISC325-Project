@@ -9,8 +9,13 @@
 import SwiftUI
 
 struct NewSplitBillView: View {
+    
+    @EnvironmentObject var truth: SourceOfTruth
+    
     @State var toSplit: String = ""
+    @State var count: Int = 1
     @State var toAmount: String = ""
+    
     var body: some View {
         VStack {
             ScrollView {
@@ -32,7 +37,7 @@ struct NewSplitBillView: View {
                     
                     HStack {
                         HStack {
-                            Text("Amount")
+                            Text("Total Amount")
                             Spacer()
                         }
                         TextField("$CAD", text: $toAmount)
@@ -42,9 +47,9 @@ struct NewSplitBillView: View {
                     }
                     .padding(.bottom, 24.0)
                     
-                    HousemateSelectorView(checkState: true, name: "Ethan Ford")
-                    HousemateSelectorView(checkState: false)
-                    HousemateSelectorView(checkState: false, name: "Celine Devin")
+                    ForEach(truth.Data_Housemates) { h in
+                        HousemateSelectorView(checkState: h.checked, name: h.name)
+                    }
                 }
                 .padding(.trailing, 16.0)
                 .padding(.bottom, 16.0)
@@ -53,10 +58,18 @@ struct NewSplitBillView: View {
             
             Spacer()
             
-            NavigationLink(destination: BillView()) {
-                ButtonView(text: "Post", textColor: Color.blue)
+            HStack {
+                NavigationLink(destination: BillView()) {
+                    Button(
+                        action:{
+                            let temp = (Int(self.toAmount) ?? -2)/2
+                            self.truth.CreateNewPayment(n: self.toSplit, a: temp, r: "Split Bill $\(self.toAmount) -> $\(temp)", nutp: self.truth.Selecter_Count, nup: 0)
+                    }) {
+                        Text("Post")
+                            .frame(minWidth: 0, maxWidth: .infinity)
+                    }.padding(.horizontal).buttonStyle(MyButtonStyle(color: .blue))
+                }
             }
-            .foregroundColor(Color.black)
             .padding(.leading, 16.0)
             .padding(.trailing, 16.0)
         }
@@ -65,18 +78,26 @@ struct NewSplitBillView: View {
 
 struct NewSplitBillView_Previews: PreviewProvider {
     static var previews: some View {
-        NewSplitBillView()
+        NewSplitBillView().environmentObject(SourceOfTruth())
     }
 }
 
 struct HousemateSelectorView: View {
-    @State var checkState:Bool = false;
+    
+    @EnvironmentObject var truth: SourceOfTruth
+    
+    @State var checkState:Bool;
     @State var name:String = "Alice Bob";
     var body: some View {
         Button(action:
             {
+                if self.checkState == true {
+                    self.truth.Selecter_Count -= 1
+                }
+                else {
+                    self.truth.Selecter_Count += 1
+                }
                 self.checkState = !self.checkState
-                print("State : \(self.checkState)")
             }
          )
          {
