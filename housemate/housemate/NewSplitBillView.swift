@@ -64,6 +64,7 @@ struct NewSplitBillView: View {
                         action:{
                             let temp = (Int(self.toAmount) ?? -2)/2
                             self.truth.CreateNewPayment(n: self.toSplit, a: temp, r: "Split Bill $\(self.toAmount) -> $\(temp)", nutp: self.truth.Selecter_Count, nup: 0)
+                            self.truth.Selecter_Count = 0
                     }) {
                         Text("Post")
                             .frame(minWidth: 0, maxWidth: .infinity)

@@ -9,7 +9,10 @@
 import SwiftUI
 
 struct AnnouncementsView: View {
-    var announcements: [Announcement] = []
+    
+    @EnvironmentObject var truth: SourceOfTruth
+    
+    @State var toadd: String = ""
     
     var body: some View {
         ScrollView {
@@ -20,16 +23,36 @@ struct AnnouncementsView: View {
             }
 
             VStack (spacing: 8.0) {
-                ForEach(announcements) { a in
+                ForEach(truth.Data_Announcements) { a in
                     FullAnnouncementCardView(text: a.text)
                     .frame(height: 160.0)
                 }
             }
             .padding(.trailing, 16.0)
             
-            ButtonView(text: "Add Announcement", textColor: Color.blue)
-                .padding(.trailing, 12.0)
-                .padding(.top, 12.0)
+            VStack {
+                VStack {
+                    TextField("New Announcement", text: $toadd)
+                    .padding(.all, 16.0)
+                    .border(Color.gray, width: 2)
+                }
+                .padding([.top, .trailing], 16.0)
+                
+                Button(
+                    action:{
+                        if self.toadd != "" {
+                            self.truth.CreateNewAnnouncement(t: self.toadd)
+                            self.toadd = ""
+                        }
+                })
+                {
+                    Text("Add New Announcement")
+                        .frame(minWidth: 0, maxWidth: .infinity)
+                }
+                .padding([.leading, .bottom], 0.0)
+                .padding(.trailing, 16.0)
+                .buttonStyle(MyButtonStyle(color: .blue))
+            }
         }
         .padding(.leading, 16.0)
     }
@@ -37,7 +60,7 @@ struct AnnouncementsView: View {
 
 struct AnnouncementsView_Previews: PreviewProvider {
     static var previews: some View {
-        AnnouncementsView()
+        AnnouncementsView().environmentObject(SourceOfTruth())
     }
 }
 

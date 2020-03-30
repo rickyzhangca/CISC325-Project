@@ -39,4 +39,10 @@ class SourceOfTruth: ObservableObject{
     func CreateNewPayment(n: String, a: Int, r: String, nutp: Int, nup: Int) {
         Data_Payments.append(Payment(name: n, amount: a, recurring: r, num_users_to_pay: nutp, num_users_paid: nup))
     }
+    func CreateNewAnnouncement(t: String) {
+        Data_Announcements.append(Announcement(text: t))
+    }
+    func CreateNewTask(n: String, nu: Int) {
+        Data_Tasks.append(Task(name: n, checkState: false, num_users: nu))
+    }
 }

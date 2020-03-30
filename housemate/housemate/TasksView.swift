@@ -9,7 +9,10 @@
 import SwiftUI
 
 struct TasksView: View {
-    var tasks: [Task] = []
+    
+    @EnvironmentObject var truth: SourceOfTruth
+    
+    @State var toadd: String = ""
     
     var body: some View {
         ScrollView {
@@ -20,18 +23,46 @@ struct TasksView: View {
             }
 
             VStack {
-                ForEach(tasks) { t in
+                ForEach(truth.Data_Tasks) { t in
                     if t.checkState == false{
                         HouseTaskView(checkState: t.checkState, task: t.name, num_users: t.num_users)
                     }
                 }
                 
-                ButtonView(text: "Add Task", textColor: Color.blue)
-                    .padding(.trailing, 12.0)
+                SectionHeaderView(text: "New Task")
+                VStack {
+                    VStack {
+                        TextField("New Task", text: $toadd)
+                        .padding(.all, 16.0)
+                        .border(Color.gray, width: 2)
+                    }
+                    .padding(.trailing, 16.0)
+                    .padding(.bottom, 8)
+                    
+                    ForEach(truth.Data_Housemates) { h in
+                        HousemateSelectorView(checkState: h.checked, name: h.name)
+                    }
+                    
+                    Button(
+                        action:{
+                            if self.toadd != "" {
+                                self.truth.CreateNewTask(n: self.toadd, nu: self.truth.Selecter_Count)
+                                self.truth.Selecter_Count = 0
+                                self.toadd = ""
+                            }
+                    })
+                    {
+                        Text("Add to Task List")
+                            .frame(minWidth: 0, maxWidth: .infinity)
+                    }
+                    .padding([.leading, .bottom], 0.0)
+                    .padding(.trailing, 16.0)
+                    .padding(.top, 8)
+                    .buttonStyle(MyButtonStyle(color: .blue))
+                }
                 
-                SectionHeaderView(text: "Completed")
-                
-                ForEach(tasks) { t in
+                SectionHeaderView(text: "Completed Tasks")
+                ForEach(truth.Data_Tasks) { t in
                     if t.checkState == true{
                         HouseTaskView(checkState: t.checkState, task: t.name, num_users: t.num_users)
                     }
@@ -44,6 +75,6 @@ struct TasksView: View {
 
 struct TasksView_Previews: PreviewProvider {
     static var previews: some View {
-        TasksView()
+        TasksView().environmentObject(SourceOfTruth())
     }
 }
