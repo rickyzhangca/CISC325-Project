@@ -21,7 +21,7 @@ struct UsefulViews_Previews: PreviewProvider {
 }
 
 struct MyButtonStyle: ButtonStyle {
-    var color: Color = .blue
+    var color: Color = .white
     public func makeBody(configuration: MyButtonStyle.Configuration) -> some View {
         
         configuration.label
@@ -46,8 +46,27 @@ struct ButtonView: View {
         }
         .foregroundColor(self.textColor)
         .padding(.vertical, 16.0)
+        .background(Color(UIColor(rgb:0x523DCE)))
+        .cornerRadius(12.0, antialiased: true)
+        .padding(.bottom, 12.0)
+    }
+}
+struct SecondaryButtonView: View {
+    @State var text:String = "button";
+    @State var textColor:Color = Color.black;
+    @State var borderColor:Color = Color.blue;
+    var body: some View {
+        HStack {
+            Spacer()
+            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
+                Text(self.text)
+            }
+            Spacer()
+        }
+        .foregroundColor(self.textColor)
+        .padding(.vertical, 16.0)
         .background(Color.white)
-        .border(self.borderColor, width: 2)
+        .border(Color(UIColor(rgb:0x523DCE)), width: 2)
         .cornerRadius(12.0, antialiased: true)
         .padding(.bottom, 12.0)
     }
@@ -61,7 +80,7 @@ struct ProfileButtonView : View {
                 Image(systemName: "person.circle.fill")
                 .font(.system(size: 42, weight: .light))
                 .imageScale(.medium)
-                .foregroundColor(Color(#colorLiteral(red: 0.662745098, green: 0.7333333333, blue: 0.831372549, alpha: 1)))
+                    .foregroundColor(Color(UIColor(rgb:0x523DCE)))
                 .frame(width: 52, height: 48)
                 Text(self.name)
             }
@@ -74,7 +93,7 @@ struct RegularProfilePhotoView : View {
             Image(systemName: "person.circle.fill")
             .font(.system(size: 42, weight: .light))
             .imageScale(.medium)
-            .foregroundColor(Color(#colorLiteral(red: 0.662745098, green: 0.7333333333, blue: 0.831372549, alpha: 1)))
+            .foregroundColor(Color(UIColor(rgb:0x523DCE)))
             .frame(width: 42, height: 42)
         }
     }
@@ -86,7 +105,7 @@ struct SmallProfilePhotoView : View {
             Image(systemName: "person.circle.fill")
             .font(.system(size: 30, weight: .light))
             .imageScale(.medium)
-            .foregroundColor(Color(#colorLiteral(red: 0.662745098, green: 0.7333333333, blue: 0.831372549, alpha: 1)))
+            .foregroundColor(Color(UIColor(rgb:0x523DCE)))
             .frame(width: 36, height: 36)
         }
     }
@@ -184,4 +203,22 @@ struct SectionHeaderView : View {
         }
         .padding(.leading, self.leading)
     }
+}
+
+extension UIColor {
+   convenience init(red: Int, green: Int, blue: Int) {
+       assert(red >= 0 && red <= 255, "Invalid red component")
+       assert(green >= 0 && green <= 255, "Invalid green component")
+       assert(blue >= 0 && blue <= 255, "Invalid blue component")
+
+       self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
+   }
+
+   convenience init(rgb: Int) {
+       self.init(
+           red: (rgb >> 16) & 0xFF,
+           green: (rgb >> 8) & 0xFF,
+           blue: rgb & 0xFF
+       )
+   }
 }

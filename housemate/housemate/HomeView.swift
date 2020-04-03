@@ -16,6 +16,11 @@ struct HomeView: View {
         NavigationView {
             ScrollView {
                 VStack {
+                    Text("H O U S E M A T E S")
+                        .font(.headline)
+                        .fontWeight(.bold)
+                        .foregroundColor(Color(UIColor(rgb:0x523DCE)))
+                        .padding(.bottom)
                     Text(self.truth.Data_House.address)
                         .font(.largeTitle)
                     HStack (spacing: 24.0) {

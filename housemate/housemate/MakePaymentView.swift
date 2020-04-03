@@ -56,7 +56,7 @@ struct MakePaymentView: View {
                 }) {
                     Text("Pay")
                         .frame(minWidth: 0, maxWidth: .infinity)
-                }.buttonStyle(MyButtonStyle(color: .blue))
+                }.buttonStyle(MyButtonStyle(color: Color(UIColor(rgb:0x523DCE))))
             }
             
         }

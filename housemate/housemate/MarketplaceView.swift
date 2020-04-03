@@ -14,21 +14,20 @@ struct MarketplaceView: View {
             VStack {
                 Text("Kingston, ON")
                     .font(.largeTitle)
-                    .padding(.top, -32.0)
             }
             .padding(.bottom, 32.0)
             
             HStack {
                 NavigationLink(destination: NewSplitBillView()) {
-                    ButtonView(text: "Filters", textColor: Color.blue, borderColor: Color.white)
+                    SecondaryButtonView(text: "Filters", textColor: Color(UIColor(rgb:0x523DCE)), borderColor: Color.white)
                 }.foregroundColor(Color.black)
 
                 NavigationLink(destination: NewSplitBillView()) {
-                    ButtonView(text: "Post a Room", textColor: Color.blue, borderColor: Color.white)
-                }.foregroundColor(Color.black)
+                    SecondaryButtonView(text: "Post a Room", textColor: Color(UIColor(rgb:0x523DCE)), borderColor: Color.white)
+                }.padding(.horizontal, 8.0).foregroundColor(Color.black)
 
                 NavigationLink(destination: NewSplitBillView()) {
-                    ButtonView(text: "Messasges", textColor: Color.blue, borderColor: Color.white)
+                    SecondaryButtonView(text: "Messasges", textColor: Color(UIColor(rgb:0x523DCE)), borderColor: Color.white)
                 }.foregroundColor(Color.black)
             }
             

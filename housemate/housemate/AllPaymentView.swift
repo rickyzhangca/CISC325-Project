@@ -64,11 +64,11 @@ struct FullBillCardView : View {
             HStack{
                 Text(self.recurring)
                     .font(.callout)
-                    .foregroundColor(Color.blue)
+                    .foregroundColor(Color(UIColor(rgb:0x523DCE)))
                 Spacer()
                 Text("\(self.num_users_paid)/\(self.num_users_to_pay) Paid")
                     .font(.callout)
-                    .foregroundColor(Color.blue)
+                    .foregroundColor(Color(UIColor(rgb:0x523DCE)))
             }
             .padding()
             HStack{
@@ -83,8 +83,8 @@ struct FullBillCardView : View {
             
             if showPayButton {
                 NavigationLink(destination: MakePaymentView(index: self.index)) {
-                    ButtonView(text: "Pay Now", textColor: Color.blue)
-                }.foregroundColor(Color.black)
+                    SecondaryButtonView(text: "Pay Now", textColor: Color(UIColor(rgb:0x523DCE)))
+                }.padding(.horizontal, 8.0).foregroundColor(Color.black)
             }
         }
         .border(Color.gray, width: 2)

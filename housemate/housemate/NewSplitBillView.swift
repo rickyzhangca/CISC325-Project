@@ -68,7 +68,8 @@ struct NewSplitBillView: View {
                     }) {
                         Text("Post")
                             .frame(minWidth: 0, maxWidth: .infinity)
-                    }.padding(.horizontal).buttonStyle(MyButtonStyle(color: .blue))
+                    }
+                    .buttonStyle(MyButtonStyle(color: Color(UIColor(rgb:0x523DCE))))
                 }
             }
             .padding(.leading, 16.0)

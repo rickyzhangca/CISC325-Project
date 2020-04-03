@@ -58,7 +58,7 @@ struct TasksView: View {
                     .padding([.leading, .bottom], 0.0)
                     .padding(.trailing, 16.0)
                     .padding(.top, 8)
-                    .buttonStyle(MyButtonStyle(color: .blue))
+                    .buttonStyle(MyButtonStyle(color:Color(UIColor(rgb:0x523DCE))))
                 }
                 
                 SectionHeaderView(text: "Completed Tasks")

@@ -27,7 +27,7 @@ struct BillView: View {
                 .padding(.bottom, 32.0)
                 
                 NavigationLink(destination: NewSplitBillView()) {
-                    ButtonView(text: "Post a Split Bill", textColor: Color.blue)
+                    ButtonView(text: "Post a Split Bill", textColor: Color.white)
                 }.foregroundColor(Color.black)
 
                 SectionHeaderView(text: "Upcoming Payments")
@@ -41,11 +41,11 @@ struct BillView: View {
                 .padding(.bottom, 12.0)
                         
                 NavigationLink(destination: AddPaymentView()) {
-                    ButtonView(text: "Add a Payment", textColor: Color.blue)
+                    SecondaryButtonView(text: "Add a Payment", textColor: Color(UIColor(rgb:0x523DCE)))
                 }.foregroundColor(Color.black)
                 
                 NavigationLink(destination: AllPaymentView()) {
-                    ButtonView(text: "All Payments", textColor: Color.blue)
+                    SecondaryButtonView(text: "All Payments", textColor: Color(UIColor(rgb:0x523DCE)))
                 }.foregroundColor(Color.black)
             }
             .padding(.leading, 16.0)
@@ -85,15 +85,16 @@ struct BillCardView : View {
                 HStack{
                     Text(self.recurring)
                         .font(.callout)
-                        .foregroundColor(Color.blue)
+                        .foregroundColor(Color(UIColor(rgb:0x523DCE)))
                     Spacer()
                     Text("\(self.num_users_paid)/\(self.num_users_to_pay) Paid")
                         .font(.callout)
-                        .foregroundColor(Color.blue)
+                        .foregroundColor(Color(UIColor(rgb:0x523DCE)))
                 }
                 .padding()
             }
             .border(Color.gray, width: 2)
+            .cornerRadius(8.0)
             .padding(.top, 12.0)
         }.foregroundColor(Color.black)
     }
