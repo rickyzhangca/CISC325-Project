@@ -47,7 +47,7 @@ struct MakePaymentView: View {
                 .navigationBarHidden(true)
                 .navigationBarTitle(Text(""))) {
                 Button(action:{
-                    let temp = Int(self.topay)
+                    let temp = Double(self.topay)
                     print(self.topay)
                     if temp == self.truth.Data_Payments[self.index].amount {
                         self.truth.Data_Payments[self.index].amount = 0

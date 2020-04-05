@@ -47,14 +47,13 @@ struct HomeView: View {
                 
                 SectionHeaderWithLinkView(text: "House Tasks", seeAll: true, leading: 16.0, view: AnyView(TasksView()))
                 
-                VStack {
-                    ForEach(0..<truth.Data_Tasks.count) { i in
-                        if self.truth.Data_Tasks[i].checkState == false {
-                            HouseTaskView(checkState: self.truth.Data_Tasks[i].checkState, task: self.truth.Data_Tasks[i].name, num_users: self.truth.Data_Tasks[i].num_users, task_id: i, icons: self.truth.Data_Tasks[i].icons)
-                        }
+                ForEach(0..<self.truth.Data_Tasks.count) { i in
+                    if self.truth.Data_Tasks[i].checkState == false {
+                        HouseTaskView(checkState: self.truth.Data_Tasks[i].checkState, task: self.truth.Data_Tasks[i].name, num_users: self.truth.Data_Tasks[i].num_users, task_id: i, icons: self.truth.Data_Tasks[i].icons)
                     }
                 }
                 .padding(.horizontal)
+                    
             }
         }
     }

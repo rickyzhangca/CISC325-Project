@@ -10,12 +10,15 @@ import SwiftUI
 
 struct ProfileView: View {
     
+    @EnvironmentObject var truth: SourceOfTruth
+    
     @State var name: String = ""
+    @State var icon: String = ""
     
     var body: some View {
         VStack {
             VStack {
-                ProfilePersonView(name: self.name)
+                ProfilePersonView(name: self.truth.Data_Housemates[0].name, icon: self.truth.Data_Housemates[0].icon)
             }
             
             List {
@@ -34,7 +37,7 @@ struct ProfileView: View {
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView()
+        ProfileView().environmentObject(SourceOfTruth())
     }
 }
 
@@ -48,7 +51,7 @@ struct ProfilePersonView: View {
             Image(systemName: self.icon)
             .font(.system(size: 100, weight: .light))
             .imageScale(.medium)
-            .foregroundColor(Color(#colorLiteral(red: 0.662745098, green: 0.7333333333, blue: 0.831372549, alpha: 1)))
+            .foregroundColor(Color(UIColor(rgb:0x523DCE)))
             .frame(width: 120, height: 100)
             .padding(.top, 32.0)
             

@@ -61,7 +61,7 @@ struct AddPaymentView: View {
                         .padding(.vertical, 16.0)
                         
                         ForEach(truth.Data_Housemates) { h in
-                            HousemateSelectorView(checkState: h.checked, name: h.name)
+                            HousemateSelectorView(checkState: h.checked, name: h.name, icon:h.icon)
                         }
                     }
                     .padding([.bottom, .trailing], 16.0)
@@ -76,7 +76,8 @@ struct AddPaymentView: View {
                         .navigationBarHidden(true)
                         .navigationBarTitle(Text(""))) {
                         Button(action:{
-                            self.truth.CreateNewPayment(n: self.topay, a: Int(self.toAmount) ?? -1, r: self.toRecur, nutp: self.truth.Selecter_Count.count, nup: 0)
+                            self.truth.CreateNewPayment(n: self.topay, a: Double(Double(self.toAmount) ?? 0.0), r: self.toRecur, nutp: self.truth.Selecter_Count.count, nup: 0, untp:self.truth.Selecter_Count_Names, unp: [], uitp:self.truth.Selecter_Count, uip:[])
+                            self.truth.Selecter_Count = []
                         }) {
                             Text("Add")
                                 .frame(minWidth: 0, maxWidth: .infinity)

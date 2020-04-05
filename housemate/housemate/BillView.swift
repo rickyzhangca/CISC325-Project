@@ -34,7 +34,16 @@ struct BillView: View {
                 VStack{
                     ForEach(0..<truth.Data_Payments.count) { i in
                         if self.truth.Data_Payments[i].amount != 0 {
-                            BillCardView(name: self.truth.Data_Payments[i].name, amount: self.truth.Data_Payments[i].amount, recurring: self.truth.Data_Payments[i].recurring, num_users_to_pay: self.truth.Data_Payments[i].num_users_to_pay, num_users_paid: self.truth.Data_Payments[i].num_users_paid, index: i)
+                            BillCardView(name: self.truth.Data_Payments[i].name,
+                                         amount_s: self.truth.Convert(d: self.truth.Data_Payments[i].amount),
+                                         recurring: self.truth.Data_Payments[i].recurring,
+                                         num_users_to_pay: self.truth.Data_Payments[i].num_users_to_pay,
+                                         num_users_paid: self.truth.Data_Payments[i].num_users_paid,
+                                         users_names_paid: self.truth.Data_Payments[i].users_names_paid,
+                                         users_icons_paid:self.truth.Data_Payments[i].users_icons_paid,
+                                         users_names_to_pay: self.truth.Data_Payments[i].users_names_to_pay,
+                                         users_icons_to_pay: self.truth.Data_Payments[i].users_icons_to_pay,
+                                         index:i)
                         }
                     }
                 }
@@ -46,6 +55,10 @@ struct BillView: View {
                 
                 NavigationLink(destination: AllPaymentView()) {
                     SecondaryButtonView(text: "All Payments", textColor: Color(UIColor(rgb:0x523DCE)))
+                }.foregroundColor(Color.black)
+                
+                NavigationLink(destination: CompletedPaymentsView()) {
+                    SecondaryButtonView(text: "Completed Payments", textColor: Color(UIColor(rgb:0x523DCE)))
                 }.foregroundColor(Color.black)
             }
             .padding(.leading, 16.0)
@@ -61,11 +74,18 @@ struct BillView_Previews: PreviewProvider {
 }
 
 struct BillCardView : View {
+    
     @State var name: String
-    @State var amount: Int = 1
+    @State var amount_s: String = "-1"
     @State var recurring: String = ""
-    @State var num_users_to_pay: Int = 4
+    @State var num_users_to_pay: Int = 1
     @State var num_users_paid: Int = 1
+    
+    @State var users_names_paid: [String] = ["B"]
+    @State var users_icons_paid: [String] = ["person.fill"]
+    @State var users_names_to_pay: [String] = ["A"]
+    @State var users_icons_to_pay: [String] = ["person"]
+    
     @State var index: Int = 0
     
     var body: some View {
@@ -76,7 +96,7 @@ struct BillCardView : View {
                         .fontWeight(.medium)
                         .foregroundColor(Color.black)
                     Spacer()
-                    Text("$\(self.amount)")
+                    Text("$\(self.amount_s)")
                         .fontWeight(.bold)
                         .foregroundColor(Color.black)
                 }
@@ -92,6 +112,20 @@ struct BillCardView : View {
                         .foregroundColor(Color(UIColor(rgb:0x523DCE)))
                 }
                 .padding()
+                
+                
+                
+                VStack {
+                    ForEach(0..<self.users_names_paid.count) { i in
+                        HousemateStaticSelectorView(checkState: true, name: self.users_names_paid[i], icon: self.users_icons_paid[i])
+                    }
+                    .padding(.leading)
+                    ForEach(0..<self.users_names_to_pay.count) { i in
+                        HousemateStaticSelectorView(checkState: false, name: self.users_names_to_pay[i], icon: self.users_icons_to_pay[i])
+                    }
+                    .padding(.leading)
+                }
+                .padding(.bottom)
             }
             .border(Color.gray, width: 2)
             .cornerRadius(8.0)

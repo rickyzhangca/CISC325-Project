@@ -47,6 +47,7 @@ struct TasksView: View {
                         action:{
                             if self.toadd != "" {
                                 self.truth.CreateNewTask(n: self.toadd, nu: self.truth.Selecter_Count.count, ics:self.truth.Selecter_Count)
+                                self.truth.Selecter_Count_Names = []
                                 self.truth.Selecter_Count = []
                                 self.toadd = ""
                             }

@@ -64,8 +64,8 @@ struct NewSplitBillView: View {
                     .navigationBarTitle(Text(""))) {
                     Button(
                         action:{
-                            let temp = (Int(self.toAmount) ?? -2)/2
-                            self.truth.CreateNewPayment(n: self.toSplit, a: temp, r: "Split Bill $\(self.toAmount) -> $\(temp)", nutp: self.truth.Selecter_Count.count, nup: 0)
+                            let temp = Double((Double(self.toAmount) ?? 0)/Double(self.truth.Selecter_Count.count))
+                            self.truth.CreateNewPayment(n: self.toSplit, a: temp, r: "Split Bill $\(self.toAmount) -> $\(self.truth.Convert(d: temp))", nutp: self.truth.Selecter_Count.count, nup: 0, untp: self.truth.Selecter_Count_Names, unp: [], uitp:self.truth.Selecter_Count, uip: [])
                             self.truth.Selecter_Count = []
                     }) {
                         Text("Post")

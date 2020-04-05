@@ -43,7 +43,7 @@ struct AllPaymentView_Previews: PreviewProvider {
 
 struct FullBillCardView : View {
     @State var name: String
-    @State var amount: Int = 1
+    @State var amount: Double = 1
     @State var recurring: String = ""
     @State var num_users_to_pay: Int = 4
     @State var num_users_paid: Int = 1

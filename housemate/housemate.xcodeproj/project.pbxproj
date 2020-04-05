@@ -28,6 +28,7 @@
 		AABB2BF02430102E003072BD /* Data_Payments.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABB2BEF2430102E003072BD /* Data_Payments.swift */; };
 		AAD61F4624307BCF00E89514 /* Data_Truth.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD61F4524307BCF00E89514 /* Data_Truth.swift */; };
 		AAD61F482431000A00E89514 /* AddPaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD61F472431000A00E89514 /* AddPaymentView.swift */; };
+		AADBF6F62439ACAD0043156B /* CompletedPaymentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADBF6F52439ACAD0043156B /* CompletedPaymentsView.swift */; };
 		AAF18818240D7B17006610CB /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF18817240D7B17006610CB /* TabBar.swift */; };
 		AAF1881A240D7BA2006610CB /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF18819240D7BA2006610CB /* HomeView.swift */; };
 		AAF1881C240D7BAA006610CB /* BillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF1881B240D7BAA006610CB /* BillView.swift */; };
@@ -84,6 +85,7 @@
 		AABB2BEF2430102E003072BD /* Data_Payments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data_Payments.swift; sourceTree = "<group>"; };
 		AAD61F4524307BCF00E89514 /* Data_Truth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data_Truth.swift; sourceTree = "<group>"; };
 		AAD61F472431000A00E89514 /* AddPaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPaymentView.swift; sourceTree = "<group>"; };
+		AADBF6F52439ACAD0043156B /* CompletedPaymentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedPaymentsView.swift; sourceTree = "<group>"; };
 		AAF18817240D7B17006610CB /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		AAF18819240D7BA2006610CB /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		AAF1881B240D7BAA006610CB /* BillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillView.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				AAF709D92412168D00A1CA0A /* NewSplitBillView.swift */,
 				AAF709D52412134400A1CA0A /* HousemateView.swift */,
 				AAF1881B240D7BAA006610CB /* BillView.swift */,
+				AADBF6F52439ACAD0043156B /* CompletedPaymentsView.swift */,
 				AA9ECE832411A61800CAABBC /* TasksView.swift */,
 				AAF709DB24121EA700A1CA0A /* AllPaymentView.swift */,
 				AAF709DF241220D900A1CA0A /* MakePaymentView.swift */,
@@ -338,6 +341,7 @@
 				AABB2BEC24300650003072BD /* Data_Housemates.swift in Sources */,
 				AABB2BEA2430044A003072BD /* Data_Announcements.swift in Sources */,
 				AAF709D62412134400A1CA0A /* HousemateView.swift in Sources */,
+				AADBF6F62439ACAD0043156B /* CompletedPaymentsView.swift in Sources */,
 				AA3E77362416983700CFBEE7 /* MarketplaceReplyView.swift in Sources */,
 				AAF18820240D7BC1006610CB /* ProfileView.swift in Sources */,
 				AA2F23F8240D74B000F3724E /* AppDelegate.swift in Sources */,

@@ -239,14 +239,40 @@ struct HousemateSelectorView: View {
                 self.checkState = !self.checkState
                 
                 if self.checkState == true {
+                    self.truth.Selecter_Count_Names.append(self.name)
                     self.truth.Selecter_Count.append(self.icon)
                 }
                 else {
-                    let i = self.truth.Selecter_Count.firstIndex(of:self.icon)
+                    let i = self.truth.Selecter_Count.firstIndex(of:self.name)
                     self.truth.Selecter_Count.remove(at:i ?? 0)
+                    
+                    let j = self.truth.Selecter_Count.firstIndex(of:self.icon)
+                    self.truth.Selecter_Count.remove(at:j ?? 0)
                 }
             }
          )
+         {
+            HStack(spacing: 12.0) {
+                checkState == true ? Image(systemName: "checkmark.circle.fill") : Image(systemName: "circle")
+                SmallProfilePhotoView(icon:self.icon)
+                Text(self.name)
+                Spacer()
+            }
+        }
+        .foregroundColor(Color.black)
+    }
+}
+
+struct HousemateStaticSelectorView: View {
+    
+    @EnvironmentObject var truth: SourceOfTruth
+    
+    @State var checkState:Bool;
+    @State var name:String = "Alice Bob";
+    @State var icon:String = "person";
+    
+    var body: some View {
+        Button(action: {})
          {
             HStack(spacing: 12.0) {
                 checkState == true ? Image(systemName: "checkmark.circle.fill") : Image(systemName: "circle")
