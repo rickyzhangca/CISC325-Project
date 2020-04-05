@@ -48,7 +48,7 @@ struct NewSplitBillView: View {
                     .padding(.bottom, 24.0)
                     
                     ForEach(truth.Data_Housemates) { h in
-                        HousemateSelectorView(checkState: h.checked, name: h.name)
+                        HousemateSelectorView(checkState: h.checked, name: h.name, icon: h.icon)
                     }
                 }
                 .padding(.trailing, 16.0)
@@ -65,8 +65,8 @@ struct NewSplitBillView: View {
                     Button(
                         action:{
                             let temp = (Int(self.toAmount) ?? -2)/2
-                            self.truth.CreateNewPayment(n: self.toSplit, a: temp, r: "Split Bill $\(self.toAmount) -> $\(temp)", nutp: self.truth.Selecter_Count, nup: 0)
-                            self.truth.Selecter_Count = 0
+                            self.truth.CreateNewPayment(n: self.toSplit, a: temp, r: "Split Bill $\(self.toAmount) -> $\(temp)", nutp: self.truth.Selecter_Count.count, nup: 0)
+                            self.truth.Selecter_Count = []
                     }) {
                         Text("Post")
                             .frame(minWidth: 0, maxWidth: .infinity)
@@ -86,32 +86,3 @@ struct NewSplitBillView_Previews: PreviewProvider {
     }
 }
 
-struct HousemateSelectorView: View {
-    
-    @EnvironmentObject var truth: SourceOfTruth
-    
-    @State var checkState:Bool;
-    @State var name:String = "Alice Bob";
-    var body: some View {
-        Button(action:
-            {
-                if self.checkState == true {
-                    self.truth.Selecter_Count -= 1
-                }
-                else {
-                    self.truth.Selecter_Count += 1
-                }
-                self.checkState = !self.checkState
-            }
-         )
-         {
-            HStack(spacing: 12.0) {
-                checkState == true ? Image(systemName: "checkmark.circle.fill") : Image(systemName: "circle")
-                SmallProfilePhotoView()
-                Text(self.name)
-                Spacer()
-            }
-        }
-        .foregroundColor(Color.black)
-    }
-}

@@ -11,24 +11,25 @@ import SwiftUI
 
 class SourceOfTruth: ObservableObject{
     @Published var Data_Housemates: [Housemate] = [
-        Housemate(name: "Alice Bob"),
-        Housemate(name: "Celine Dave"),
-        Housemate(name: "Eva Fil"),
+        Housemate(name: "Alice Bob", icon:"moon.circle.fill"),
+        Housemate(name: "Celine Dave", icon:"bolt.circle.fill"),
+        Housemate(name: "Eva Fil", icon:"heart.circle.fill"),
     ]
     
     @Published var Data_Announcements: [Announcement] = [
-        Announcement(text: "Welcome to 123 Paris Hill st everyone!", check_status: false),
-        Announcement(text: "The landlord told us to tranfer the rent at the beginning of each month so I've set it up in the bill tab!", check_status: false),
-        Announcement(text: "Testing this new app", check_status: true),
+        Announcement(text: "Welcome to 123 Paris Hill st everyone!", check_status: false, made_by:"Alice Bob", icon:"moon.circle.fill"),
+        Announcement(text: "The landlord told us to tranfer the rent at the beginning of each month so I've set it up in the bill tab!", check_status: false, made_by:"Celine Dave", icon:"bolt.circle.fill"),
+        Announcement(text: "Testing this new app", check_status: true, made_by:"Eva Fil", icon:"heart.circle.fill"),
     ]
     
     @Published var Data_Tasks: [Task] = [
-        Task(name: "test task 1!", checkState: false, num_users: 1),
-        Task(name: "test task 2!", checkState: false, num_users: 3),
-        Task(name: "test task 3!", checkState: true, num_users: 2),
+        Task(name: "Sweep floors", checkState: false, num_users: 1, icons: ["moon.circle.fill"]),
+        Task(name: "Take out garbage!", checkState: false, num_users: 3, icons: ["moon.circle.fill", "bolt.circle.fill", "heart.circle.fill"]),
+        Task(name: "Clean up the mess Andrew made!", checkState: true, num_users: 2, icons: ["moon.circle.fill", "bolt.circle.fill"]),
     ]
+    @Published var temp: [House] = [House(address: "123 Paris Hill St")]
     
-    @Published var Selecter_Count: Int = 0
+    @Published var Selecter_Count: [String] = []
     
     @Published var Data_House = House(address: "123 Paris Hill St")
     
@@ -41,10 +42,10 @@ class SourceOfTruth: ObservableObject{
     func CreateNewPayment(n: String, a: Int, r: String, nutp: Int, nup: Int) {
         Data_Payments.append(Payment(name: n, amount: a, recurring: r, num_users_to_pay: nutp, num_users_paid: nup))
     }
-    func CreateNewAnnouncement(t: String, c: Bool) {
-        Data_Announcements.append(Announcement(text: t, check_status: c))
+    func CreateNewAnnouncement(t:String, c:Bool, m:String, i:String) {
+        Data_Announcements.append(Announcement(text: t, check_status: c, made_by: m, icon: i))
     }
-    func CreateNewTask(n: String, nu: Int) {
-        Data_Tasks.append(Task(name: n, checkState: false, num_users: nu))
+    func CreateNewTask(n: String, nu: Int, ics: [String]) {
+        Data_Tasks.append(Task(name: n, checkState: false, num_users: nu, icons: ics))
     }
 }

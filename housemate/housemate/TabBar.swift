@@ -11,8 +11,6 @@ import SwiftUI
 struct TabBar: View {
     @EnvironmentObject var truth: SourceOfTruth
     
-    var tasks: [Task] = []
-    var announcements: [Announcement] = []
     var house: House = House(address: "temp")
     
     @State private var selection = 0

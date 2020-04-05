@@ -18,22 +18,14 @@ struct MarketplaceView: View {
             .padding(.bottom, 32.0)
             
             HStack {
-                NavigationLink(destination: NewSplitBillView()) {
-                    SecondaryButtonView(text: "Filters", textColor: Color(UIColor(rgb:0x523DCE)), borderColor: Color.white)
-                }.foregroundColor(Color.black)
+                SecondaryButtonView(text: "Filters", textColor: Color(UIColor(rgb:0x523DCE)), borderColor: Color.white)
 
-                NavigationLink(destination: NewSplitBillView()) {
-                    SecondaryButtonView(text: "Post a Room", textColor: Color(UIColor(rgb:0x523DCE)), borderColor: Color.white)
-                }.padding(.horizontal, 8.0).foregroundColor(Color.black)
+                SecondaryButtonView(text: "Post a Room", textColor: Color(UIColor(rgb:0x523DCE)), borderColor: Color.white)
+                    .padding(.horizontal, 8.0)
 
-                NavigationLink(destination: NewSplitBillView()) {
-                    SecondaryButtonView(text: "Messasges", textColor: Color(UIColor(rgb:0x523DCE)), borderColor: Color.white)
-                }.foregroundColor(Color.black)
+                SecondaryButtonView(text: "Messasges", textColor: Color(UIColor(rgb:0x523DCE)), borderColor: Color.white)
             }
             
-            MarketplaceCardView()
-            MarketplaceCardView()
-            MarketplaceCardView()
             MarketplaceCardView()
         }.padding(.horizontal, 12.0)
     }

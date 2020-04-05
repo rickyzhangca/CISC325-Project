@@ -9,10 +9,14 @@
 import SwiftUI
 
 struct HousemateView: View {
+    
+    @State var name: String = ""
+    @State var icon: String = "person"
+    
     var body: some View {
         ScrollView {
             VStack {
-                ProfilePersonView(name: "Celine David")
+                ProfilePersonView(name:self.name, icon:self.icon)
                 List {
                     HStack {
                         Image(systemName: "phone")  .font(.system(size: 24.0))

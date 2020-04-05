@@ -20,7 +20,7 @@ struct BillView: View {
                         .font(.largeTitle)
                     HStack (spacing: 24.0) {
                         ForEach(self.truth.Data_Housemates) { h in
-                            ProfileButtonView(name:h.name)
+                            ProfileButtonView(name:h.name, icon:h.icon)
                         }
                     }
                 }

@@ -25,7 +25,7 @@ struct TasksView: View {
             VStack {
                 ForEach(truth.Data_Tasks) { t in
                     if t.checkState == false{
-                        HouseTaskView(checkState: t.checkState, task: t.name, num_users: t.num_users)
+                        HouseTaskView(checkState: t.checkState, task: t.name, num_users: t.num_users, icons:t.icons)
                     }
                 }
                 
@@ -40,14 +40,14 @@ struct TasksView: View {
                     .padding(.bottom, 8)
                     
                     ForEach(truth.Data_Housemates) { h in
-                        HousemateSelectorView(checkState: h.checked, name: h.name)
+                        HousemateSelectorView(checkState: h.checked, name: h.name, icon:h.icon)
                     }
                     
                     Button(
                         action:{
                             if self.toadd != "" {
-                                self.truth.CreateNewTask(n: self.toadd, nu: self.truth.Selecter_Count)
-                                self.truth.Selecter_Count = 0
+                                self.truth.CreateNewTask(n: self.toadd, nu: self.truth.Selecter_Count.count, ics:self.truth.Selecter_Count)
+                                self.truth.Selecter_Count = []
                                 self.toadd = ""
                             }
                     })
@@ -64,7 +64,7 @@ struct TasksView: View {
                 SectionHeaderView(text: "Completed Tasks")
                 ForEach(truth.Data_Tasks) { t in
                     if t.checkState == true{
-                        HouseTaskView(checkState: t.checkState, task: t.name, num_users: t.num_users)
+                        HouseTaskView(checkState: t.checkState, task: t.name, num_users: t.num_users, icons:t.icons)
                     }
                 }
             }

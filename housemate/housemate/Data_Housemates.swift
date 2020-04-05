@@ -13,4 +13,5 @@ struct Housemate : Identifiable {
     var id = UUID()
     var name: String
     var checked: Bool = false
+    var icon: String = "person.fill"
 }

@@ -76,7 +76,7 @@ struct AddPaymentView: View {
                         .navigationBarHidden(true)
                         .navigationBarTitle(Text(""))) {
                         Button(action:{
-                            self.truth.CreateNewPayment(n: self.topay, a: Int(self.toAmount) ?? -1, r: self.toRecur, nutp: self.truth.Selecter_Count, nup: 0)
+                            self.truth.CreateNewPayment(n: self.topay, a: Int(self.toAmount) ?? -1, r: self.toRecur, nutp: self.truth.Selecter_Count.count, nup: 0)
                         }) {
                             Text("Add")
                                 .frame(minWidth: 0, maxWidth: .infinity)

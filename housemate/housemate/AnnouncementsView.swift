@@ -25,7 +25,7 @@ struct AnnouncementsView: View {
             VStack (spacing: 8.0) {
                 ForEach(0..<truth.Data_Announcements.count) { i in
                     if self.truth.Data_Announcements[i].check_status == false {
-                        FullAnnouncementCardView(text: self.truth.Data_Announcements[i].text, announcement_id: i)
+                        FullAnnouncementCardView(text: self.truth.Data_Announcements[i].text, made_by: self.truth.Data_Announcements[i].made_by, announcement_id: i, icon: self.truth.Data_Announcements[i].icon)
                         .frame(height: 160.0)
                     }
                 }
@@ -43,7 +43,7 @@ struct AnnouncementsView: View {
                 Button(
                     action:{
                         if self.toadd != "" {
-                            self.truth.CreateNewAnnouncement(t: self.toadd, c: false)
+                            self.truth.CreateNewAnnouncement(t: self.toadd, c: false, m:self.truth.Data_Housemates[0].name, i:self.truth.Data_Housemates[0].icon)
                             self.toadd = ""
                         }
                 })
@@ -60,7 +60,7 @@ struct AnnouncementsView: View {
             VStack (spacing: 8.0) {
                 ForEach(0..<truth.Data_Announcements.count) { i in
                     if self.truth.Data_Announcements[i].check_status == true {
-                        FullAnnouncementCardView(text: self.truth.Data_Announcements[i].text, announcement_id: i)
+                        FullAnnouncementCardView(text: self.truth.Data_Announcements[i].text, made_by: self.truth.Data_Announcements[i].made_by, announcement_id: i, icon: self.truth.Data_Announcements[i].icon)
                         .frame(height: 160.0)
                     }
                 }
@@ -82,14 +82,17 @@ struct FullAnnouncementCardView : View {
     @EnvironmentObject var truth: SourceOfTruth
     
     @State var text:String = "aaa";
+    @State var made_by:String = "Alice Bob";
     @State var announcement_id:Int = 1;
+    @State var icon:String = "person";
     
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                SmallProfilePhotoView()
+                SmallProfilePhotoView(icon:self.icon)
                     .padding(.top, 12.0)
                     .padding([.leading, .bottom], 6.0)
+                Text(self.made_by)
                 Spacer()
                 Button(action:{
                     self.truth.Data_Announcements[self.announcement_id].check_status.toggle()

@@ -14,4 +14,5 @@ struct Task : Identifiable {
     var name: String
     var checkState: Bool = false
     var num_users: Int = 1
+    var icons: [String] = ["person.fill"]
 }

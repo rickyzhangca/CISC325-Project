@@ -9,10 +9,13 @@
 import SwiftUI
 
 struct ProfileView: View {
+    
+    @State var name: String = ""
+    
     var body: some View {
         VStack {
             VStack {
-                ProfilePersonView()
+                ProfilePersonView(name: self.name)
             }
             
             List {
@@ -36,10 +39,13 @@ struct ProfileView_Previews: PreviewProvider {
 }
 
 struct ProfilePersonView: View {
+    
     @State var name:String = "Alice Bob";
+    @State var icon:String = "person";
+    
     var body: some View {
         VStack {
-            Image(systemName: "person.circle.fill")
+            Image(systemName: self.icon)
             .font(.system(size: 100, weight: .light))
             .imageScale(.medium)
             .foregroundColor(Color(#colorLiteral(red: 0.662745098, green: 0.7333333333, blue: 0.831372549, alpha: 1)))

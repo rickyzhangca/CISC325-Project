@@ -74,11 +74,12 @@ struct SecondaryButtonView: View {
 
 struct ProfileButtonView : View {
     @State var name:String = "Alice Bob";
+    @State var icon:String = "person";
     var body: some View {
-        NavigationLink(destination: HousemateView()) {
+        NavigationLink(destination: HousemateView(name:self.name, icon:self.icon)) {
             VStack {
-                Image(systemName: "person.circle.fill")
-                .font(.system(size: 42, weight: .light))
+                Image(systemName: self.icon)
+                .font(.system(size: 36, weight: .light))
                 .imageScale(.medium)
                     .foregroundColor(Color(UIColor(rgb:0x523DCE)))
                 .frame(width: 52, height: 48)
@@ -100,10 +101,11 @@ struct RegularProfilePhotoView : View {
 }
 
 struct SmallProfilePhotoView : View {
+    @State var icon:String = "person";
     var body: some View {
         VStack {
-            Image(systemName: "person.circle.fill")
-            .font(.system(size: 30, weight: .light))
+            Image(systemName: self.icon)
+            .font(.system(size: 28, weight: .light))
             .imageScale(.medium)
             .foregroundColor(Color(UIColor(rgb:0x523DCE)))
             .frame(width: 36, height: 36)
@@ -221,4 +223,38 @@ extension UIColor {
            blue: rgb & 0xFF
        )
    }
+}
+
+struct HousemateSelectorView: View {
+    
+    @EnvironmentObject var truth: SourceOfTruth
+    
+    @State var checkState:Bool;
+    @State var name:String = "Alice Bob";
+    @State var icon:String = "person";
+    
+    var body: some View {
+        Button(action:
+            {
+                self.checkState = !self.checkState
+                
+                if self.checkState == true {
+                    self.truth.Selecter_Count.append(self.icon)
+                }
+                else {
+                    let i = self.truth.Selecter_Count.firstIndex(of:self.icon)
+                    self.truth.Selecter_Count.remove(at:i ?? 0)
+                }
+            }
+         )
+         {
+            HStack(spacing: 12.0) {
+                checkState == true ? Image(systemName: "checkmark.circle.fill") : Image(systemName: "circle")
+                SmallProfilePhotoView(icon:self.icon)
+                Text(self.name)
+                Spacer()
+            }
+        }
+        .foregroundColor(Color.black)
+    }
 }

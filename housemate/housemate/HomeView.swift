@@ -25,7 +25,7 @@ struct HomeView: View {
                         .font(.largeTitle)
                     HStack (spacing: 24.0) {
                         ForEach(self.truth.Data_Housemates) { h in
-                            ProfileButtonView(name:h.name)
+                            ProfileButtonView(name:h.name, icon:h.icon)
                         }
                     }
                 }
@@ -36,8 +36,10 @@ struct HomeView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack() {
                         ForEach(self.truth.Data_Announcements) { a in
-                            AnnouncementCardView(text: a.text)
-                            .padding(.leading, 12.0)
+                            if a.check_status == false {
+                                AnnouncementCardView(text: a.text, made_by: a.made_by, icon:a.icon)
+                                .padding(.leading, 12.0)
+                            }
                         }
                     }
                     .padding(.trailing)
@@ -48,7 +50,7 @@ struct HomeView: View {
                 VStack {
                     ForEach(0..<truth.Data_Tasks.count) { i in
                         if self.truth.Data_Tasks[i].checkState == false {
-                            HouseTaskView(checkState: self.truth.Data_Tasks[i].checkState, task: self.truth.Data_Tasks[i].name, num_users: self.truth.Data_Tasks[i].num_users, task_id: i)
+                            HouseTaskView(checkState: self.truth.Data_Tasks[i].checkState, task: self.truth.Data_Tasks[i].name, num_users: self.truth.Data_Tasks[i].num_users, task_id: i, icons: self.truth.Data_Tasks[i].icons)
                         }
                     }
                 }
@@ -66,16 +68,22 @@ struct HomeView_Previews: PreviewProvider {
 
 struct AnnouncementCardView : View {
     @State var text:String = "aaa";
+    @State var made_by:String = "aaa";
+    @State var icon:String = "person.fill";
+    
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                SmallProfilePhotoView()
+                SmallProfilePhotoView(icon:self.icon)
                     .padding(.top, 12.0)
                     .padding([.leading, .bottom], 6.0)
+                Text(self.made_by)
+                    .font(.footnote)
+                    .padding(.top, 6.0)
                 Spacer()
             }
             Text(self.text)
-                .padding(.leading, 12.0)
+            .padding(.leading, 12.0)
             Spacer()
         }
         .frame(width: 260, height: 170)
@@ -91,6 +99,7 @@ struct HouseTaskView : View {
     @State var task:String = "to do";
     @State var num_users:Int = 1;
     @State var task_id:Int = 1;
+    @State var icons:[String] = ["person.fill"];
     
     var body: some View {
         Button(action:
@@ -107,9 +116,9 @@ struct HouseTaskView : View {
                 Spacer()
                 
                 HStack {
-                    ForEach(0 ..< self.num_users) {_ in
-                        SmallProfilePhotoView()
-                            .padding(.leading, -12.0)
+                    ForEach(0 ..< self.icons.count) {i in
+                        SmallProfilePhotoView(icon:self.icons[i])
+                        .padding(.leading, -12.0)
                     }
                 }
             }

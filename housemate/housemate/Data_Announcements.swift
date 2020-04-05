@@ -13,4 +13,6 @@ struct Announcement : Identifiable {
     var id = UUID()
     var text: String
     var check_status: Bool
+    var made_by: String
+    var icon: String
 }
