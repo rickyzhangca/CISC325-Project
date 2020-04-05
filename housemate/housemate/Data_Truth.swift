@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class SourceOfTruth: ObservableObject{
     @Published var Data_Housemates: [Housemate] = [
@@ -16,8 +17,9 @@ class SourceOfTruth: ObservableObject{
     ]
     
     @Published var Data_Announcements: [Announcement] = [
-        Announcement(text: "Welcome to 123 Paris Hill st everyone!"),
-        Announcement(text: "The landlord told us to tranfer the rent at the beginning of each month so I've set it up in the bill tab!"),
+        Announcement(text: "Welcome to 123 Paris Hill st everyone!", check_status: false),
+        Announcement(text: "The landlord told us to tranfer the rent at the beginning of each month so I've set it up in the bill tab!", check_status: false),
+        Announcement(text: "Testing this new app", check_status: true),
     ]
     
     @Published var Data_Tasks: [Task] = [
@@ -39,8 +41,8 @@ class SourceOfTruth: ObservableObject{
     func CreateNewPayment(n: String, a: Int, r: String, nutp: Int, nup: Int) {
         Data_Payments.append(Payment(name: n, amount: a, recurring: r, num_users_to_pay: nutp, num_users_paid: nup))
     }
-    func CreateNewAnnouncement(t: String) {
-        Data_Announcements.append(Announcement(text: t))
+    func CreateNewAnnouncement(t: String, c: Bool) {
+        Data_Announcements.append(Announcement(text: t, check_status: c))
     }
     func CreateNewTask(n: String, nu: Int) {
         Data_Tasks.append(Task(name: n, checkState: false, num_users: nu))

@@ -72,7 +72,9 @@ struct AddPaymentView: View {
                 Spacer()
                 
                 HStack {
-                    NavigationLink(destination: BillView()) {
+                    NavigationLink(destination: BillView()
+                        .navigationBarHidden(true)
+                        .navigationBarTitle(Text(""))) {
                         Button(action:{
                             self.truth.CreateNewPayment(n: self.topay, a: Int(self.toAmount) ?? -1, r: self.toRecur, nutp: self.truth.Selecter_Count, nup: 0)
                         }) {

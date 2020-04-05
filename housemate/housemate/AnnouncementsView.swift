@@ -23,9 +23,11 @@ struct AnnouncementsView: View {
             }
 
             VStack (spacing: 8.0) {
-                ForEach(truth.Data_Announcements) { a in
-                    FullAnnouncementCardView(text: a.text)
-                    .frame(height: 160.0)
+                ForEach(0..<truth.Data_Announcements.count) { i in
+                    if self.truth.Data_Announcements[i].check_status == false {
+                        FullAnnouncementCardView(text: self.truth.Data_Announcements[i].text, announcement_id: i)
+                        .frame(height: 160.0)
+                    }
                 }
             }
             .padding(.trailing, 16.0)
@@ -41,7 +43,7 @@ struct AnnouncementsView: View {
                 Button(
                     action:{
                         if self.toadd != "" {
-                            self.truth.CreateNewAnnouncement(t: self.toadd)
+                            self.truth.CreateNewAnnouncement(t: self.toadd, c: false)
                             self.toadd = ""
                         }
                 })
@@ -53,6 +55,17 @@ struct AnnouncementsView: View {
                 .padding(.trailing, 16.0)
                 .buttonStyle(MyButtonStyle(color: Color(UIColor(rgb:0x523DCE))))
             }
+            .padding(.bottom, 16.0)
+            
+            VStack (spacing: 8.0) {
+                ForEach(0..<truth.Data_Announcements.count) { i in
+                    if self.truth.Data_Announcements[i].check_status == true {
+                        FullAnnouncementCardView(text: self.truth.Data_Announcements[i].text, announcement_id: i)
+                        .frame(height: 160.0)
+                    }
+                }
+            }
+            .padding(.trailing, 16.0)
         }
         .padding(.leading, 16.0)
     }
@@ -65,7 +78,12 @@ struct AnnouncementsView_Previews: PreviewProvider {
 }
 
 struct FullAnnouncementCardView : View {
+    
+    @EnvironmentObject var truth: SourceOfTruth
+    
     @State var text:String = "aaa";
+    @State var announcement_id:Int = 1;
+    
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
@@ -73,6 +91,23 @@ struct FullAnnouncementCardView : View {
                     .padding(.top, 12.0)
                     .padding([.leading, .bottom], 6.0)
                 Spacer()
+                Button(action:{
+                    self.truth.Data_Announcements[self.announcement_id].check_status.toggle()
+                }) {
+                    if self.truth.Data_Announcements[self.announcement_id].check_status == true
+                    {
+                        Image(systemName: "eye.slash")
+                            .padding(.trailing)
+                        .font(.system(size: 17, weight: .light))
+                        .foregroundColor(Color.gray)
+                    }
+                    else {
+                        Image(systemName: "eye")
+                            .padding(.trailing)
+                        .font(.system(size: 17, weight: .light))
+                        .foregroundColor(Color(UIColor(rgb:0x523DCE)))
+                    }
+                }
             }
             Text(self.text)
                 .padding(.leading, 12.0)

@@ -46,8 +46,10 @@ struct HomeView: View {
                 SectionHeaderWithLinkView(text: "House Tasks", seeAll: true, leading: 16.0, view: AnyView(TasksView()))
                 
                 VStack {
-                    ForEach(self.truth.Data_Tasks) { t in
-                        HouseTaskView(checkState: t.checkState, task: t.name, num_users: t.num_users)
+                    ForEach(0..<truth.Data_Tasks.count) { i in
+                        if self.truth.Data_Tasks[i].checkState == false {
+                            HouseTaskView(checkState: self.truth.Data_Tasks[i].checkState, task: self.truth.Data_Tasks[i].name, num_users: self.truth.Data_Tasks[i].num_users, task_id: i)
+                        }
                     }
                 }
                 .padding(.horizontal)
@@ -82,15 +84,19 @@ struct AnnouncementCardView : View {
 }
 
 struct HouseTaskView : View {
+    
+    @EnvironmentObject var truth: SourceOfTruth
+    
     @State var checkState:Bool = false;
     @State var task:String = "to do";
     @State var num_users:Int = 1;
+    @State var task_id:Int = 1;
     
     var body: some View {
         Button(action:
             {
                 self.checkState = !self.checkState
-                print("State : \(self.checkState)")
+                self.truth.Data_Tasks[self.task_id].checkState.toggle()
             }
          )
          {

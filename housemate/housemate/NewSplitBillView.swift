@@ -59,7 +59,9 @@ struct NewSplitBillView: View {
             Spacer()
             
             HStack {
-                NavigationLink(destination: BillView()) {
+                NavigationLink(destination: BillView()
+                    .navigationBarHidden(true)
+                    .navigationBarTitle(Text(""))) {
                     Button(
                         action:{
                             let temp = (Int(self.toAmount) ?? -2)/2

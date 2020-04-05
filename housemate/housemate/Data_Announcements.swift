@@ -12,4 +12,5 @@ import SwiftUI
 struct Announcement : Identifiable {
     var id = UUID()
     var text: String
+    var check_status: Bool
 }

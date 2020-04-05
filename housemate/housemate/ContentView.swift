@@ -10,13 +10,12 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        NavigationView {
-            VStack {
-                Text("start testing")
-                NavigationLink(destination: TabBar()) {
-                    Text("start testing")
-                }
-            }
-        }
+        TabBar().environmentObject(SourceOfTruth())
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView().previewDevice("iPhone 11 Pro Max").environmentObject(SourceOfTruth())
     }
 }

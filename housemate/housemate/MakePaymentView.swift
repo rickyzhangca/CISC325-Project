@@ -43,7 +43,9 @@ struct MakePaymentView: View {
             }
             .padding(.bottom, 12.0)
                         
-            NavigationLink(destination: BillView()) {
+            NavigationLink(destination: BillView()
+                .navigationBarHidden(true)
+                .navigationBarTitle(Text(""))) {
                 Button(action:{
                     let temp = Int(self.topay)
                     print(self.topay)
